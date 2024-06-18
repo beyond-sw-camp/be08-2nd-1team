@@ -1,1 +1,1 @@
-# be08-2nd-1team
+# be08-2nd-AOSynerge-꿔BORROW
