@@ -35,8 +35,4 @@ public class Rental {
     @NonNull
     @Column(name = "PostID")
     private int postID;
-
-    public Rental() {
-
-    }
 }
