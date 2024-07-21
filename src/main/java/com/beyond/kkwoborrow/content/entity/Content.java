@@ -1,5 +1,7 @@
 package com.beyond.kkwoborrow.content.entity;
 
+import com.beyond.kkwoborrow.chatList.entity.ChatList;
+import com.beyond.kkwoborrow.notification.entity.Notifications;
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -31,11 +33,15 @@ public class Content {
     private UserType userType;
 
     @Nonnull
+    @ManyToOne
+    @JoinColumn(name = "ChatID")
     @Column(name = "ChatID")
-    private int chatId;
+    private ChatList chatId;
 
     @Nonnull
+    @ManyToOne
+    @JoinColumn(name = "NotificationID")
     @Column(name = "NotificationID")
-    private int notificationId;
+    private Notifications notificationId;
 
 }

@@ -1,5 +1,6 @@
 package com.beyond.kkwoborrow.notification.entity;
 
+import com.beyond.kkwoborrow.users.entity.Users;
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -17,5 +18,7 @@ public class Notifications {
     private long notificationId;
 
     @Nonnull
-    private long userId;
+    @ManyToOne
+    @JoinColumn(name = "UserID")
+    private Users userId;
 }

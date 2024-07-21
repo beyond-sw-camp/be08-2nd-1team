@@ -1,12 +1,14 @@
 package com.beyond.kkwoborrow.rental.entity;
 
+import com.beyond.kkwoborrow.post.entity.Posts;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -19,20 +21,20 @@ public class Rental {
     private long transactionID;
 
     @NonNull
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "RentalDate")
-    private Date rentalDate;
+    private LocalDateTime rentalDate;
 
     @NonNull
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "ReturnDate")
-    private Date returDate;
+    private LocalDateTime returDate;
 
     @NonNull
     @Column(name = "IsReturn")
     private Boolean isReturn;
 
     @NonNull
+    @ManyToOne
+    @JoinColumn(name = "PostID")
     @Column(name = "PostID")
-    private int postID;
+    private Posts postID;
 }

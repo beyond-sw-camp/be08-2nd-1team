@@ -1,5 +1,6 @@
 package com.beyond.kkwoborrow.reservation.entity;
 
+import com.beyond.kkwoborrow.post.entity.Posts;
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -17,6 +18,8 @@ public class Reservation {
     private long reserveId;
 
     @Nonnull
+    @ManyToOne
+    @JoinColumn(name = "PostID")
     @Column(name = "PostID")
-    private long postId;
+    private Posts postId;
 }

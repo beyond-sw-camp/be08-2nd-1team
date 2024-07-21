@@ -1,5 +1,6 @@
 package com.beyond.kkwoborrow.chatList.entity;
 
+import com.beyond.kkwoborrow.users.entity.Users;
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -17,6 +18,8 @@ public class ChatList {
     private long chatId;
 
     @Nonnull
+    @ManyToOne
+    @JoinColumn(name = "UserID")
     @Column(name = "UserID")
-    private int userId;
+    private Users userId;
 }

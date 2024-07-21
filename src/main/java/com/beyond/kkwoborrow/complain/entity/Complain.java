@@ -1,5 +1,6 @@
 package com.beyond.kkwoborrow.complain.entity;
 
+import com.beyond.kkwoborrow.users.entity.Users;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -14,5 +15,7 @@ public class Complain {
     private long complainID;
 
     @NonNull
-    private int userID;
+    @ManyToOne
+    @JoinColumn(name = "UserID")
+    private Users userID;
 }

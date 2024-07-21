@@ -1,5 +1,7 @@
 package com.beyond.kkwoborrow.alarm.entity;
 
+import com.beyond.kkwoborrow.rental.entity.Rental;
+import com.beyond.kkwoborrow.reservation.entity.Reservation;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,10 +30,13 @@ public class Alarm {
     @Column(name = "AlarmType")
     private AlarmType alarmType;
 
+    @ManyToOne
+    @JoinColumn(name = "RentalID")
     @Column(name = "RentalID")
-    private Integer rentalId;
+    private Rental rentalId;
 
-    @NonNull
-    @Column(name = "ReservationID")
-    private int reservationId;
+    @ManyToOne
+    @JoinColumn(name = "ReserveID")
+    @Column(name = "ReserveID")
+    private Reservation reserveId;
 }
