@@ -1,4 +1,4 @@
-package com.beyond.kkwoborrow.complain.vo;
+package com.beyond.kkwoborrow.complain.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;

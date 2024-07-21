@@ -1,4 +1,4 @@
-package com.beyond.kkwoborrow.alarm.model.vo;
+package com.beyond.kkwoborrow.alarm.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;

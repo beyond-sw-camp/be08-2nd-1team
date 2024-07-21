@@ -1,4 +1,4 @@
-package com.beyond.kkwoborrow.alarm.model.vo;
+package com.beyond.kkwoborrow.alarm.entity;
 
 public enum  AlarmType {
     Rental, Return, Reservation
