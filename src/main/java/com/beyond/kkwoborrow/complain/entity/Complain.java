@@ -10,8 +10,9 @@ import lombok.*;
 @Entity
 public class Complain {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ComplainID")
-    private int complainID;
+    private long complainID;
 
     @NotNull
     private int userID;
