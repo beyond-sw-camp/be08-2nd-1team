@@ -14,6 +14,6 @@ public class Complain {
     @Column(name = "ComplainID")
     private long complainID;
 
-    @NotNull
+    @NonNull
     private int userID;
 }

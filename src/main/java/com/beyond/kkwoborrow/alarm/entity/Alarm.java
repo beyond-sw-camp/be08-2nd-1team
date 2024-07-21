@@ -2,9 +2,7 @@ package com.beyond.kkwoborrow.alarm.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -24,14 +22,14 @@ public class Alarm {
     @Column(name = "MeetTime")
     private LocalDateTime meetTime;
 
-    @NotNull
+    @NonNull
     @Column(name = "AlarmType")
     private AlarmType alarmType;
 
     @Column(name = "RentalID")
     private Integer rentalId;
 
-    @NotNull
+    @NonNull
     @Column(name = "ReservationID")
     private int reservationId;
 }
