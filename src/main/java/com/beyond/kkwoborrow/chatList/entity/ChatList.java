@@ -1,9 +1,7 @@
 package com.beyond.kkwoborrow.chatList.entity;
 
 import jakarta.annotation.Nonnull;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,8 +12,9 @@ import lombok.NoArgsConstructor;
 @Entity
 public class ChatList {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ChatID")
-    private int chatId;
+    private long chatId;
 
     @Nonnull
     @Column(name = "UserID")

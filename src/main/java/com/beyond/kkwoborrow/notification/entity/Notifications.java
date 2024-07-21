@@ -1,9 +1,7 @@
 package com.beyond.kkwoborrow.notification.entity;
 
 import jakarta.annotation.Nonnull;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,9 +12,10 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Notifications {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "NotificationID")
-    private int notificationId;
+    private long notificationId;
 
     @Nonnull
-    private int userId;
+    private long userId;
 }

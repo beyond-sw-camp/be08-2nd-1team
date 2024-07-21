@@ -16,7 +16,7 @@ public class Content {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ContentID")
-    private int contentId;
+    private long contentId;
 
     @Nonnull
     @Column(name = "Detail")
