@@ -1,0 +1,42 @@
+package com.beyond.kkwoborrow.alarm.entity;
+
+import com.beyond.kkwoborrow.rental.entity.Rental;
+import com.beyond.kkwoborrow.reservation.entity.Reservation;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+
+import java.time.LocalDateTime;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+public class Alarm {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "AlarmID")
+    private long alarmId;
+
+    @Column(name = "MeetPlace")
+    private String meetPlace;
+
+    @Column(name = "MeetTime")
+    private LocalDateTime meetTime;
+
+    @NonNull
+    @Column(name = "AlarmType")
+    private AlarmType alarmType;
+
+    @ManyToOne
+    @JoinColumn(name = "RentalID")
+    @Column(name = "RentalID")
+    private Rental rentalId;
+
+    @ManyToOne
+    @JoinColumn(name = "ReserveID")
+    @Column(name = "ReserveID")
+    private Reservation reserveId;
+}
