@@ -2,12 +2,11 @@ package com.beyond.kkwoborrow.rental.entity;
 
 import com.beyond.kkwoborrow.post.entity.Posts;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -20,19 +19,19 @@ public class Rental {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long transactionID;
 
-    @NonNull
+    @NotNull
     @Column(name = "RentalDate")
     private LocalDateTime rentalDate;
 
-    @NonNull
+    @NotNull
     @Column(name = "ReturnDate")
     private LocalDateTime returDate;
 
-    @NonNull
+    @NotNull
     @Column(name = "IsReturn")
     private Boolean isReturn;
 
-    @NonNull
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "PostID")
     @Column(name = "PostID")

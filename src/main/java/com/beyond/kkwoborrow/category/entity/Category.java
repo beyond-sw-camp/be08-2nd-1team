@@ -1,7 +1,7 @@
 package com.beyond.kkwoborrow.category.entity;
 
-import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,7 +16,7 @@ public class Category {
     @Column(name = "CategoryID")
     private long categoryId;
 
-    @Nonnull
+    @NotNull
     @Column(name = "CategoryName")
     private String categoryName;
 }

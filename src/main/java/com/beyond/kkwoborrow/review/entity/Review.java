@@ -2,8 +2,8 @@ package com.beyond.kkwoborrow.review.entity;
 
 import com.beyond.kkwoborrow.products.entity.Products;
 import com.beyond.kkwoborrow.users.entity.Users;
-import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDateTime;
 
@@ -14,23 +14,23 @@ public class Review {
     @Column(name = "ReviewID")
     private long reviewId;
 
-    @Nonnull
+    @NotNull
     @Column(name = "ReviewRate")
     private Float reviewRate = 5.0f;
 
     @Column(name = "Comment")
     private String comment;
 
-    @Nonnull
+    @NotNull
     @Column(name = "ReviewDate")
     private LocalDateTime reviewDate;
 
-    @Nonnull
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "UserID")
     private Users user;
 
-    @Nonnull
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "ProductID")
     private Products product;
