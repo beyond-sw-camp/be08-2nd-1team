@@ -2,11 +2,12 @@ package com.beyond.kkwoborrow.complain.entity;
 
 import com.beyond.kkwoborrow.users.entity.Users;
 import jakarta.persistence.*;
-import lombok.*;
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 public class Complain {
     @Id
@@ -14,7 +15,7 @@ public class Complain {
     @Column(name = "ComplainID")
     private long complainID;
 
-    @NonNull
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "UserID")
     private Users userID;

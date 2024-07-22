@@ -1,15 +1,12 @@
 package com.beyond.kkwoborrow.products.entity;
 
+import com.beyond.kkwoborrow.category.entity.Category;
 import com.beyond.kkwoborrow.users.entity.Users;
-import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 public class Products {
     @Id
@@ -17,29 +14,29 @@ public class Products {
     @Column(name = "ProductID")
     private long productId;
 
-    @Nonnull
+    @NotNull
     @Column(name = "ProductName")
     private String productName;
 
-    @Nonnull
+    @NotNull
     @Column(name = "Location")
     private String location;
 
-    @Nonnull
+    @NotNull
     @Column(name = "Available")
     private boolean available;
 
-    @Nonnull
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "UserId")
     private Users userId;
 
-    @Nonnull
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "CategoryID")
     private Category categoryId;
 
-    @Nonnull
+    @NotNull
     @Column(name = "Price")
     private int price;
 }
