@@ -2,8 +2,8 @@ package com.beyond.kkwoborrow.post.entity;
 
 import com.beyond.kkwoborrow.products.entity.Products;
 import com.beyond.kkwoborrow.users.entity.Users;
+import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -18,22 +18,22 @@ public class Posts {
     @Column(name = "PostID")
     private long postId;
 
-    @NotNull
+    @Nonnull
     @Column(name = "Title")
     private String title;
 
-    @NotNull
+    @Nonnull
     @Column(name = "PostContent")
     private String postContent;
 
-    @NotNull
+    @Nonnull
     @Column(name = "UploadDate")
     private LocalDateTime uploadDate;
 
     @Column(name = "UpdateDate")
     private LocalDateTime updateDate;
 
-    @NotNull
+    @Nonnull
     @ManyToOne
     @JoinColumn(name = "UserID")
     private Users user;

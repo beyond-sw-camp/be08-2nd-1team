@@ -1,7 +1,8 @@
 package com.beyond.kkwoborrow.users.entity;
 
+import jakarta.annotation.Nonnull;
+
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,27 +17,27 @@ public class Users {
     @Column(name = "UserID")
     private long userId;
 
-    @NotNull
+    @Nonnull
     @Column(name = "UserName")
     private String userName;
 
-    @NotNull
+    @Nonnull
     @Column(name = "Email")
     private String email;
 
-    @NotNull
+    @Nonnull
     @Column(name = "Password")
     private String password;
 
-    @NotNull
+    @Nonnull
     @Column(name = "UserRate")
     private double userRate;
 
-    @NotNull
+    @Nonnull
     @Column(name = "UserType")
     private UserType userType;
 
-    @NotNull
+    @Nonnull
     @Column(name = "Address")
     private String address;
 

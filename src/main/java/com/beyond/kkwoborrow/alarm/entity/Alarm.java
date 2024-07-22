@@ -3,10 +3,10 @@ package com.beyond.kkwoborrow.alarm.entity;
 import com.beyond.kkwoborrow.rental.entity.Rental;
 import com.beyond.kkwoborrow.reservation.entity.Reservation;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 import java.time.LocalDateTime;
 
@@ -26,7 +26,7 @@ public class Alarm {
     @Column(name = "MeetTime")
     private LocalDateTime meetTime;
 
-    @NotNull
+    @NonNull
     @Column(name = "AlarmType")
     private AlarmType alarmType;
 

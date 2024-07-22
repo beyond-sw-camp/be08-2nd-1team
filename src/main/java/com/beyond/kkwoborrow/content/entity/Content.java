@@ -2,8 +2,8 @@ package com.beyond.kkwoborrow.content.entity;
 
 import com.beyond.kkwoborrow.chatList.entity.ChatList;
 import com.beyond.kkwoborrow.notification.entity.Notifications;
+import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,25 +20,25 @@ public class Content {
     @Column(name = "ContentID")
     private long contentId;
 
-    @NotNull
+    @Nonnull
     @Column(name = "Detail")
     private String detail;
 
-    @NotNull
+    @Nonnull
     @Column(name = "SendTime")
     private LocalDateTime sendTime;
 
-    @NotNull
+    @Nonnull
     @Column(name = "UserType")
     private UserType userType;
 
-    @NotNull
+    @Nonnull
     @ManyToOne
     @JoinColumn(name = "ChatID")
     @Column(name = "ChatID")
     private ChatList chatId;
 
-    @NotNull
+    @Nonnull
     @ManyToOne
     @JoinColumn(name = "NotificationID")
     @Column(name = "NotificationID")
