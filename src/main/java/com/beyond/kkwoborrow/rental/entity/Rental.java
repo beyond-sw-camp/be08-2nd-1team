@@ -34,6 +34,5 @@ public class Rental {
     @NotNull
     @ManyToOne
     @JoinColumn(name = "PostID")
-    @Column(name = "PostID")
     private Posts postID;
 }

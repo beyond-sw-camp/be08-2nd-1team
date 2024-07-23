@@ -20,6 +20,5 @@ public class Reservation {
     @NotNull
     @ManyToOne
     @JoinColumn(name = "PostID")
-    @Column(name = "PostID")
     private Posts postId;
 }

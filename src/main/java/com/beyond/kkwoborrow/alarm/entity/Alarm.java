@@ -31,12 +31,10 @@ public class Alarm {
     private AlarmType alarmType;
 
     @ManyToOne
-    @JoinColumn(name = "RentalID")
-    @Column(name = "RentalID")
-    private Rental rentalId;
+    @JoinColumn(name = "TransactionID")
+    private Rental transactionId;
 
     @ManyToOne
     @JoinColumn(name = "ReserveID")
-    @Column(name = "ReserveID")
     private Reservation reserveId;
 }

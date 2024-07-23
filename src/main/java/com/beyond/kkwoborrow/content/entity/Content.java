@@ -35,13 +35,11 @@ public class Content {
     @NotNull
     @ManyToOne
     @JoinColumn(name = "ChatID")
-    @Column(name = "ChatID")
     private ChatList chatId;
 
     @NotNull
     @ManyToOne
     @JoinColumn(name = "NotificationID")
-    @Column(name = "NotificationID")
     private Notifications notificationId;
 
 }
