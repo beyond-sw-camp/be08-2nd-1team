@@ -1,6 +1,5 @@
 package com.beyond.kkwoborrow.products.entity;
 
-import com.beyond.kkwoborrow.category.entity.Category;
 import com.beyond.kkwoborrow.users.entity.Users;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
