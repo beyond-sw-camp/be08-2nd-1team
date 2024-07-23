@@ -4,14 +4,12 @@ import com.beyond.kkwoborrow.products.entity.Products;
 import com.beyond.kkwoborrow.users.entity.Users;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
+@Data
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 public class Posts {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -4,15 +4,11 @@ import com.beyond.kkwoborrow.chatList.entity.ChatList;
 import com.beyond.kkwoborrow.notification.entity.Notifications;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 public class Content {
     @Id
@@ -29,6 +25,7 @@ public class Content {
     private LocalDateTime sendTime;
 
     @NotNull
+    @Enumerated(EnumType.STRING)
     @Column(name = "UserType")
     private UserType userType;
 

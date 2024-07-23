@@ -4,9 +4,11 @@ import com.beyond.kkwoborrow.products.entity.Products;
 import com.beyond.kkwoborrow.users.entity.Users;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
+@Data
 @Entity
 public class Review {
     @Id

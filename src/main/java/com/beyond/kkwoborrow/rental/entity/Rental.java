@@ -3,15 +3,11 @@ package com.beyond.kkwoborrow.rental.entity;
 import com.beyond.kkwoborrow.post.entity.Posts;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 public class Rental {
     @Id
