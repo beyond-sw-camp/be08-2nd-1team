@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/chatList-service/chats")
+@RequestMapping("/api/v1/chatList-service")
 @Tag(name = "ChatList APIs", description = "채팅 목록 관련 API 목록")
 public class ChatListController {
     private final ChatListService chatListService;
@@ -21,26 +21,26 @@ public class ChatListController {
         this.chatListService = chatListService;
     }
 
-    @GetMapping("/{chat-id}")
+    @GetMapping("/chat/{chat-id}")
     public ResponseEntity<ChatListResponseDto> getChatList(@PathVariable("chat-id") Long chatId) {
         ChatListResponseDto responseDto = chatListService.getChatList(chatId);
 
         return new ResponseEntity<>(responseDto, HttpStatus.OK);
     }
 
-    @GetMapping("/{user-id}")
+    @GetMapping("/chats/{user-id}")
     public ResponseEntity<List<ChatListResponseDto>> getChatLists(@PathVariable("user-id") Long userId) {
         List<ChatListResponseDto> responseDto = chatListService.getChatLists(userId);
 
         return new ResponseEntity<>(responseDto, HttpStatus.OK);
     }
 
-    @DeleteMapping("/{chat-id}")
+    @DeleteMapping("/chat/{chat-id}")
     public void deleteChat(@PathVariable("chat-id") Long chatId) {
         chatListService.delete(chatId);
     }
 
-    @DeleteMapping("/{user-id}")
+    @DeleteMapping("/chats/{user-id}")
     public void deleteChats(@PathVariable("user-id") Long userId) {
         chatListService.deleteAll(userId);
     }
