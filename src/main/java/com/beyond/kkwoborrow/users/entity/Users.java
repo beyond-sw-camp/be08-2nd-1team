@@ -10,11 +10,11 @@ import org.hibernate.annotations.ColumnDefault;
 
 
 @Data
+@NoArgsConstructor
 @Entity
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "UserID")
     private Long userId;
 
     @NotNull
