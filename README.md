@@ -13,7 +13,7 @@
 <br><br>
 
 ## 💡 커밋 컨벤션
-
+Udacity Commit Convention: [Udacity Commit Convention][Udacity Commit Convention]
 [Udacity Commit Convention]: https://udacity.github.io/git-styleguide/ "commit convention"
 
 ### 메시지 구조
