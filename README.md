@@ -60,8 +60,9 @@ Issue: #123
 [WBS 문서](https://docs.google.com/spreadsheets/d/1a-3ZwOdtigPyTlqB04m4GaJN9n2l6s8l3Ynwk6f4-O4/edit?gid=1835326347#gid=1835326347)
 <details>
   <summary>
-  ![wbs1](https://github.com/user-attachments/assets/06618437-3814-415b-a477-7ba3ecdb93ec)
     
+  ![wbs1](https://github.com/user-attachments/assets/06618437-3814-415b-a477-7ba3ecdb93ec)
+
   </summary>
   
 </details>
