@@ -1,8 +1,8 @@
-package com.beyond.kkwoborrow.rental.entity.service;
+package com.beyond.kkwoborrow.rental.service;
 
 import com.beyond.kkwoborrow.rental.entity.Rental;
-import com.beyond.kkwoborrow.rental.entity.dto.RentalResponseDto;
-import com.beyond.kkwoborrow.rental.entity.repository.RentalRepository;
+import com.beyond.kkwoborrow.rental.dto.RentalResponseDto;
+import com.beyond.kkwoborrow.rental.repository.RentalRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;

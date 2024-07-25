@@ -1,4 +1,4 @@
-package com.beyond.kkwoborrow.rental.entity.dto;
+package com.beyond.kkwoborrow.rental.dto;
 
 import com.beyond.kkwoborrow.rental.entity.Rental;
 

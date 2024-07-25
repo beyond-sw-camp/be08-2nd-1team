@@ -7,8 +7,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import com.beyond.kkwoborrow.products.entity.Products;
-import com.beyond.kkwoborrow.users.entity.Users;
+
 import java.time.LocalDateTime;
 
 @Data
@@ -26,7 +25,7 @@ public class Review {
     @DecimalMin("0.00")
     @DecimalMax("5.00")
     @Column(name = "ReviewRate")
-    private double reviewRate = 5.0f;
+    private double reviewRate = 5.0;
 
     @Column(name = "Comment")
     private String comment;
@@ -47,17 +46,4 @@ public class Review {
     protected void onCreate() {
         this.reviewDate = LocalDateTime.now();
     }
-
-    @Column(name = "ReviewDate")
-    private LocalDateTime reviewDate;
-
-    @NotNull
-    @ManyToOne
-    @JoinColumn(name = "UserID")
-    private Users user;
-
-    @NotNull
-    @ManyToOne
-    @JoinColumn(name = "ProductID")
-    private Products product;
 }

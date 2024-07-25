@@ -9,9 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
 
-
 @Data
-@NoArgsConstructor
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -83,3 +81,4 @@ public class Users {
         }
     }
 }
+

@@ -5,9 +5,11 @@ import com.beyond.kkwoborrow.users.entity.Users;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
+@NoArgsConstructor
 public class Products {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,8 +34,6 @@ public class Products {
     private Users userId;
 
     @NotNull
-    @ManyToOne
-    @JoinColumn(name = "CategoryID")
     private Category category;
 
     @NotNull
