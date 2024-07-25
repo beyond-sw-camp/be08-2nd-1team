@@ -32,6 +32,8 @@ public class Products {
     private Users userId;
 
     @NotNull
+    @ManyToOne
+    @JoinColumn(name = "CategoryID")
     private Category category;
 
     @NotNull

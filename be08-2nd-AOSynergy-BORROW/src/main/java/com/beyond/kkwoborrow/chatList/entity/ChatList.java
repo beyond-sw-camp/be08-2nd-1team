@@ -16,5 +16,5 @@ public class ChatList {
     @NotNull
     @ManyToOne
     @JoinColumn(name = "UserID")
-    private Users user;
+    private Users userId;
 }

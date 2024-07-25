@@ -35,6 +35,7 @@ public class Alarm {
     @JoinColumn(name = "TransactionID")
     private Rental transactionId;
 
+
     @ManyToOne
     @JoinColumn(name = "ReserveID")
     private Reservation reserveId;

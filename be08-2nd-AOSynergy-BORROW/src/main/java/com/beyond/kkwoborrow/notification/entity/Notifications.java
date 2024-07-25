@@ -1,4 +1,4 @@
-package com.beyond.kkwoborrow.chatList.entity;
+package com.beyond.kkwoborrow.notification.entity;
 
 import com.beyond.kkwoborrow.users.entity.Users;
 import jakarta.persistence.*;
@@ -7,14 +7,14 @@ import lombok.Data;
 
 @Data
 @Entity
-public class ChatList {
+public class Notifications {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ChatID")
-    private long chatId;
+    @Column(name = "NotificationID")
+    private long notificationId;
 
     @NotNull
     @ManyToOne
     @JoinColumn(name = "UserID")
-    private Users user;
+    private Users userId;
 }
