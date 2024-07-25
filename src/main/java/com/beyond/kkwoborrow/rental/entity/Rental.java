@@ -31,4 +31,8 @@ public class Rental {
     @ManyToOne
     @JoinColumn(name = "PostID")
     private Posts postID;
+
+    public Long getId() {
+        return transactionID;
+    }
 }
