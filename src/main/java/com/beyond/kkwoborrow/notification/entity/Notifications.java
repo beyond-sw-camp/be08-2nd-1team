@@ -16,5 +16,5 @@ public class Notifications {
     @NotNull
     @ManyToOne
     @JoinColumn(name = "UserID")
-    private Users userId;
+    private Users user;
 }
