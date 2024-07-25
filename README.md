@@ -34,22 +34,9 @@ refactor: 코드 리펙토링
 test: 테스트 코드, 리펙토링 테스트 코드 추가
 chore: 빌드 업무 수정, 패키지 매니저 수정
 ```
-### 예시
-```
-feat: add user authentication feature
 
-Implemented OAuth2 based authentication for users. This includes
-login, logout, and session management. The feature uses Spring Security
-and supports Google and Facebook OAuth2 providers.
-
-Issue: #123
-타입: feat (새로운 기능 추가)
-변경 요약: 사용자 인증 기능 추가
-상세 설명: OAuth2를 사용한 사용자 인증 기능을 구현했다는 설명. 로그인, 로그아웃, 세션 관리 등을 포함하며, Spring Security를 사용하고 Google과 Facebook OAuth2 제공자를 지원한다고 명시.
-이슈 번호: #123 (해당 기능과 관련된 이슈 번호)
-```
 <details>
-  <summary>예시</summary>
+  <summary>### 예시</summary>
   feat: add user authentication feature
 
 Implemented OAuth2 based authentication for users. This includes
