@@ -4,17 +4,20 @@ import com.beyond.kkwoborrow.users.dto.UserRequestDto;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
 
 
 @Data
+@NoArgsConstructor
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "UserID")
     private Long userId;
 
     @NotNull
