@@ -17,4 +17,8 @@ public class Reservation {
     @ManyToOne
     @JoinColumn(name = "PostID")
     private Posts postId;
+
+    public long getReserveID() {
+        return reserveId;
+    }
 }
