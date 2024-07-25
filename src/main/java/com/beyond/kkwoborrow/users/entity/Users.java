@@ -4,6 +4,7 @@ import com.beyond.kkwoborrow.users.dto.UserRequestDto;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
@@ -11,6 +12,8 @@ import org.hibernate.annotations.ColumnDefault;
 
 @Data
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
