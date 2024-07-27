@@ -1,7 +1,9 @@
 package com.beyond.kkwoborrow.products.controller;
 
+import com.beyond.kkwoborrow.products.dto.BaseResponseDto;
 import com.beyond.kkwoborrow.products.dto.ProductRequestDto;
 import com.beyond.kkwoborrow.products.dto.ProductResponseDto;
+import com.beyond.kkwoborrow.products.entity.Products;
 import com.beyond.kkwoborrow.products.service.ProductService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -10,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @Tag(name = "Products APIs", description = "제품 관련 API 목록")
@@ -42,6 +46,17 @@ public class ProductController {
     }
 
     // 제품 목록 불러오기
+    @GetMapping("/products")
+    @Operation(summary = "제품 목록 조회", description = "제품 목록을 조회한다.")
+    public ResponseEntity<BaseResponseDto<Products>> getProducts(){
+        List<Products> products =  productService.getProducts();
+        if (!products.isEmpty()){
+            return ResponseEntity.ok(new BaseResponseDto<>(HttpStatus.OK, products));
+        } else{
+            return ResponseEntity.ok(new BaseResponseDto<>(HttpStatus.NOT_FOUND, products));
+        }
+
+    }
 
 
     // 제품 정보 수정
