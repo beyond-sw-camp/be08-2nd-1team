@@ -9,11 +9,17 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
-@RequestMapping("/api/v1/user-service")
-@Tag(name = "Users APIs", description = "회원 관련 API 목록")
+
+/*@RestController
+@Tag(name = "Users APIs", description = "회원 관련 API 목록")*/
+@Controller
+
 public class UserController {
     @Autowired
     UserService userService;
@@ -59,6 +65,23 @@ public class UserController {
     @Operation(summary = "회원 정보 삭제", description = "특정 회원의 정보를 삭제한다.")
     public void deleteUser(@Parameter(description = "회원 번호", example = "1") @PathVariable("user-id") Long userId) {
         userService.deleteUser(userId);
+    }
+
+    @GetMapping("/user-info")
+    public String getCurrentUser(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String username = auth.getName();
+        UserResponseDto userResponseDto = userService.findByUsername(username);
+        model.addAttribute("user", userResponseDto);
+        return "userInfo"; // userInfo.html 템플릿 파일로 리턴
+    }
+
+    private ResponseEntity<UserResponseDto> buildResponse(UserResponseDto userResponseDto) {
+        if (userResponseDto != null){
+            return new ResponseEntity<>(userResponseDto, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
 }
