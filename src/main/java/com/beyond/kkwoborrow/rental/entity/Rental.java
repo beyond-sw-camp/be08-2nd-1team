@@ -32,7 +32,4 @@ public class Rental {
     @JoinColumn(name = "PostID")
     private Posts postID;
 
-    public Long getId() {
-        return transactionID;
-    }
 }
