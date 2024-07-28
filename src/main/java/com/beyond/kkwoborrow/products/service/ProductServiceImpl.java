@@ -9,6 +9,7 @@ import com.beyond.kkwoborrow.users.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -45,7 +46,7 @@ public class ProductServiceImpl implements ProductService {
     public ProductResponseDto updateProduct(Long productId, ProductRequestDto productInfo) {
         Optional<Products> updateProduct = productRepository.findById(productId);
 
-        if (updateProduct.isPresent()){
+        if (updateProduct.isPresent()) {
             updateProduct.get().setProductRequestDto(productInfo);
 
             Optional<Users> user = userRepository.findById(productInfo.getUserId());
@@ -61,5 +62,10 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void deleteProduct(Long productId) {
         productRepository.deleteById(productId);
+    }
+
+    @Override
+    public List<Products> getProducts() {
+        return productRepository.findAll();
     }
 }
