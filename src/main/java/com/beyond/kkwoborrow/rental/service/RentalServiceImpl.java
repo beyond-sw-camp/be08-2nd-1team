@@ -1,7 +1,7 @@
 package com.beyond.kkwoborrow.rental.service;
 
-import com.beyond.kkwoborrow.post.entity.Posts;
-import com.beyond.kkwoborrow.post.repository.PostRepository;
+import com.beyond.kkwoborrow.posts.entity.Posts;
+import com.beyond.kkwoborrow.posts.repository.PostRepository;
 import com.beyond.kkwoborrow.rental.dto.RentalRequestDto;
 import com.beyond.kkwoborrow.rental.dto.RentalResponseDto;
 import com.beyond.kkwoborrow.rental.entity.Rental;

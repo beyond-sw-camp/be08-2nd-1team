@@ -1,8 +1,6 @@
 package com.beyond.kkwoborrow.rental.dto;
 
-import com.beyond.kkwoborrow.post.entity.Posts;
 import com.beyond.kkwoborrow.rental.entity.Rental;
-import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 

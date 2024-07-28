@@ -1,6 +1,6 @@
 package com.beyond.kkwoborrow.reservation.entity;
 
-import com.beyond.kkwoborrow.post.entity.Posts;
+import com.beyond.kkwoborrow.posts.entity.Posts;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;

@@ -1,9 +1,8 @@
-package com.beyond.kkwoborrow.review.service.impl;
+package com.beyond.kkwoborrow.review.service;
 
 import com.beyond.kkwoborrow.review.dto.ReviewDTO;
 import com.beyond.kkwoborrow.review.entity.Review;
 import com.beyond.kkwoborrow.review.repository.ReviewRepository;
-import com.beyond.kkwoborrow.review.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
