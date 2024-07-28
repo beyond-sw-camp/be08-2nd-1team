@@ -4,12 +4,14 @@ import com.beyond.kkwoborrow.users.dto.UserRequestDto;
 import com.beyond.kkwoborrow.users.dto.UserResponseDto;
 import com.beyond.kkwoborrow.users.entity.Users;
 import com.beyond.kkwoborrow.users.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
+    @Autowired
     UserRepository userRepository;
     @Override
     public UserResponseDto save(UserRequestDto user) {
@@ -36,6 +38,7 @@ public class UserServiceImpl implements UserService {
         Optional<Users> updateUser = userRepository.findById(userId);
 
         if (updateUser.isPresent()){
+            System.out.println(updateUser.get());
             updateUser.get().setUserRequestDto(userInfo);
 
             userRepository.save(updateUser.get());

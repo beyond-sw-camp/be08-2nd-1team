@@ -9,8 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface ChatListRepository extends JpaRepository<ChatList, Long> {
-    List<ChatList> findByUser(Users user);
+    List<ChatList> findAllByUser(Users user);
 
     void deleteAllByUser(Users user);
-
 }

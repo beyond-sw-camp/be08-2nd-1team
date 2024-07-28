@@ -1,6 +1,6 @@
 package com.beyond.kkwoborrow.rental.entity;
 
-import com.beyond.kkwoborrow.post.entity.Posts;
+import com.beyond.kkwoborrow.posts.entity.Posts;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
@@ -32,7 +32,4 @@ public class Rental {
     @JoinColumn(name = "PostID")
     private Posts postID;
 
-    public Long getId() {
-        return transactionID;
-    }
 }

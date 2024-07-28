@@ -1,9 +1,12 @@
 package com.beyond.kkwoborrow.rental.dto;
 
+import lombok.Getter;
+
 import java.time.LocalDateTime;
 
+@Getter
 public class RentalRequestDto {
-    private long TransactionID;
+    private Long TransactionID;
 
     private LocalDateTime RentalDate;
 
@@ -11,5 +14,5 @@ public class RentalRequestDto {
 
     private boolean IsReturn;
 
-    private int PostID;
+   private Long PostId;
 }

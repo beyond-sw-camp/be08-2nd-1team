@@ -65,10 +65,10 @@ public class Users {
             this.userRate = user.getUserRate();
         }
 
-        if (user.getUserType().equals("JOIN")){
-            this.userType = UserType.JOIN;
+        if (user.getUserType().equals("USER")){
+            this.userType = UserType.USER;
         } else{
-            this.userType = UserType.LEAVE;
+            this.userType = UserType.ADMIN;
 
         }
         this.address = user.getAddress();
