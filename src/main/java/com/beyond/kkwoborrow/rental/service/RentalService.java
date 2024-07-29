@@ -3,7 +3,7 @@ import com.beyond.kkwoborrow.rental.dto.RentalRequestDto;
 import com.beyond.kkwoborrow.rental.dto.RentalResponseDto;
 
 public interface RentalService {
-    RentalResponseDto searchProduct(RentalRequestDto rentalRequestDto);
+    RentalResponseDto Rent(Long postId);
 
     RentalResponseDto Return(Long transactionID);
 }
