@@ -11,7 +11,9 @@ import com.beyond.kkwoborrow.reservation.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -46,7 +48,12 @@ public class AlarmServiceImpl implements AlarmService {
 
     @Override
     public void deleteAlarm(Long alarmId) {
-        alarmRepository.deleteById(alarmId);
+        Optional<Alarm> alarm = alarmRepository.findById(alarmId);
+        if (alarm.isPresent()) {
+            alarmRepository.deleteById(alarmId);
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Alarm not found");
+        }
     }
 
     @Override
