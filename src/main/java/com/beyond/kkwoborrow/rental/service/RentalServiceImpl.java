@@ -18,6 +18,7 @@ public class RentalServiceImpl implements RentalService {
 
     @Override
     public RentalResponseDto searchProduct(RentalRequestDto rentalRequestDto) {
+        // postRepository
         Posts post = postRepository.findById(rentalRequestDto.getPostId()).orElseThrow(() -> new IllegalArgumentException("Invalid PostID"));
 
         Optional<Rental> rental = rentalRepository.findById(rentalRequestDto.getPostId());
@@ -27,6 +28,7 @@ public class RentalServiceImpl implements RentalService {
 
     @Override
     public RentalResponseDto Return(Long transactionID) {
+        // rentalRepository 에서 transactionID를 찾아 그리고 만약에 없으면 에러 띄우기
         Rental rental = rentalRepository.findById(transactionID).orElseThrow(() -> new IllegalArgumentException("transactionID Not found"));
 
         return new RentalResponseDto(rental);

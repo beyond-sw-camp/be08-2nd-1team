@@ -6,7 +6,6 @@ import com.beyond.kkwoborrow.rental.service.RentalService;
 
 
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 import org.springframework.http.HttpStatus;
@@ -17,13 +16,14 @@ import java.time.LocalDateTime;
 
 @RestController
 @Tag(name = "Rental APIs", description = "렌탈 관련 API 목록")
+@RequestMapping("/rental")
 public class RentalController {
     RentalService rentalService;
 
     // 대여 신청 가능 물품 불러오기
-    @PostMapping("/rental/{isRental}")
+    @PostMapping("/rent")
     @Operation(summary = "대여 신청", description = "대여 가능한 물품의 목록을 조회한다.")
-    public ResponseEntity<RentalResponseDto> Rent(@PathVariable("isRental") RentalRequestDto rentalRequestDto) {
+    public ResponseEntity<RentalResponseDto> Rent(@RequestBody RentalRequestDto rentalRequestDto) {
         RentalResponseDto rentalResponseDto = rentalService.searchProduct(rentalRequestDto);
 
         if (rentalResponseDto != null) {
@@ -34,11 +34,10 @@ public class RentalController {
 
     }
 
-    @PostMapping("/rental/{isReturn}")
+    @PostMapping("/rental/{transactionID}")
     @Operation(summary = "반납 신청", description = "반납해야할 물품 목록을 조회한다.")
     public ResponseEntity<RentalResponseDto> Return(
-            @Parameter(description = "")
-            @PathVariable("isReturn") Long transactionID) {
+            @PathVariable("transactionID") Long transactionID) {
         RentalResponseDto ReturnSearch = rentalService.Return(transactionID);
 
         if (ReturnSearch != null) {
