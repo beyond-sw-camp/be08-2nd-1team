@@ -5,6 +5,7 @@ import com.beyond.kkwoborrow.users.dto.UserResponseDto;
 import com.beyond.kkwoborrow.users.entity.Users;
 import com.beyond.kkwoborrow.users.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -17,7 +18,7 @@ public class UserServiceImpl implements UserService {
     public UserResponseDto save(UserRequestDto user) {
         Users newUser = new Users(user);
         Users saveUser = userRepository.save(newUser);
-
+        newUser.setPassword(passwordEncoder.encode(user.getPassword())); // 비밀번호 암호화
         return new UserResponseDto(saveUser);
     }
 
@@ -46,4 +47,18 @@ public class UserServiceImpl implements UserService {
         }
         return null;
     }
+
+    @Override
+    public UserResponseDto findByUsername(String username) {
+        Users user = userRepository.findByUserName(username);
+        if (user != null) {
+            return new UserResponseDto(user);
+        } else {
+            return null;
+        }
+    }
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
 }
