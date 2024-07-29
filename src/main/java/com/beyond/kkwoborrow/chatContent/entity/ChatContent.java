@@ -16,33 +16,33 @@ import java.time.LocalDateTime;
 public class ChatContent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ContentID")
+    @Column(name = "content_id")
     @Schema(description = "채팅 내용 ID", example = "1")
     private long chatContentId;
 
     @NotNull
-    @Column(name = "Detail")
+    @Column(name = "detail")
     @Schema(description = "채팅 내용의 세부사항", example = "테스트 채팅내용입니다.")
     private String detail;
 
     @NotNull
-    @Column(name = "SendTime")
+    @Column(name = "send_time")
     @Schema(description = "채팅을 보낸 시간", example = "2024-07-27T10:15:30")
     private LocalDateTime sendTime;
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "UserID")
+    @JoinColumn(name = "user_id")
     @Schema(description = "채팅을 보낸 사용자", implementation = Users.class)
     private Users user;
 
     @ManyToOne
-    @JoinColumn(name = "ChatID")
+    @JoinColumn(name = "chat_id")
     @Schema(description = "채팅과 관련된 채팅 목록", implementation = ChatList.class)
     private ChatList chatList;
 
     @ManyToOne
-    @JoinColumn(name = "NotificationID")
+    @JoinColumn(name = "notification_id")
     @Schema(description = "채팅과 관련된 알림", implementation = Notifications.class)
     private Notifications notification;
 }

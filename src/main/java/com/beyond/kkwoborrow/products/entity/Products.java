@@ -13,31 +13,31 @@ import lombok.NoArgsConstructor;
 public class Products {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ProductID")
+    @Column(name = "product_id")
     private long productId;
 
     @NotNull
-    @Column(name = "ProductName")
+    @Column(name = "product_name")
     private String productName;
 
     @NotNull
-    @Column(name = "Location")
+    @Column(name = "location")
     private String location;
 
     @NotNull
-    @Column(name = "Available")
+    @Column(name = "available")
     private boolean available;
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "UserId")
+    @JoinColumn(name = "user_id")
     private Users userId;
 
     @NotNull
     private Category category;
 
     @NotNull
-    @Column(name = "Price")
+    @Column(name = "price")
     private int price;
 
     public Products(ProductRequestDto product) {

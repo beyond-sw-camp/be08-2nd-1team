@@ -11,25 +11,25 @@ import java.time.LocalDateTime;
 @Entity
 public class Rental {
     @Id
-    @Column(name = "TransactionID")
+    @Column(name = "transaction_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long transactionID;
 
     @NotNull
-    @Column(name = "RentalDate")
+    @Column(name = "rental_date")
     private LocalDateTime rentalDate;
 
     @NotNull
-    @Column(name = "ReturnDate")
+    @Column(name = "return_date")
     private LocalDateTime returDate;
 
     @NotNull
-    @Column(name = "IsReturn")
+    @Column(name = "is_return")
     private Boolean isReturn;
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "PostID")
+    @JoinColumn(name = "post_id")
     private Posts postID;
 
 }

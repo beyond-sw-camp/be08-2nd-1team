@@ -18,26 +18,26 @@ import java.time.LocalDateTime;
 public class Alarm {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "AlarmID")
+    @Column(name = "alarm_id")
     private long alarmId;
 
-    @Column(name = "MeetPlace")
+    @Column(name = "meet_place")
     private String meetPlace;
 
-    @Column(name = "MeetTime")
+    @Column(name = "meet_time")
     private LocalDateTime meetTime;
 
     @NotNull
     @Enumerated(EnumType.STRING)
-    @Column(name = "AlarmType")
+    @Column(name = "alarm_type")
     private AlarmType alarmType;
 
     @ManyToOne
-    @JoinColumn(name = "TransactionID")
+    @JoinColumn(name = "transaction_id")
     private Rental transaction;
 
     @ManyToOne
-    @JoinColumn(name = "ReserveID")
+    @JoinColumn(name = "reserve_id")
     private Reservation reservation;
 
     public Alarm(AlarmRequestDto alarmRequestDto, Rental transaction, Reservation reservation) {

@@ -10,12 +10,12 @@ import lombok.Data;
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ReserveID")
+    @Column(name = "reserve_id")
     private long reserveId;
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "PostID")
+    @JoinColumn(name = "post_id")
     private Posts postId;
 
     public long getReserveID() {

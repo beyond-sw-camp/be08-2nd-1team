@@ -15,13 +15,13 @@ import lombok.NoArgsConstructor;
 public class ChatList {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ChatID")
+    @Column(name = "chat_id")
     @Schema(description = "채팅 ID", example = "1")
     private long chatId;
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "UserID")
+    @JoinColumn(name = "user_id")
     @Schema(description = "사용자 정보", required = true)
     private Users user;
 

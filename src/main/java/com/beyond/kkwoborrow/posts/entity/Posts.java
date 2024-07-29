@@ -16,28 +16,28 @@ import java.time.LocalDateTime;
 public class Posts {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "PostID")
+    @Column(name = "post_id")
     private long postId;
 
-    @Column(name = "Title")
+    @Column(name = "title")
     private String title;
 
-    @Column(name = "PostContent")
+    @Column(name = "post_content")
     private String postContent;
 
     @NotNull
-    @Column(name = "UploadDate", updatable = false)
+    @Column(name = "upload_date", updatable = false)
     private LocalDateTime uploadDate;
 
-    @Column(name = "UpdateDate")
+    @Column(name = "update_date")
     private LocalDateTime updateDate;
 
     @NotNull
-    @Column(name = "UserID")
+    @Column(name = "userID")
     private int userId;
 
     @NotNull
-    @Column(name = "ProductID")
+    @Column(name = "product_id")
     private int productId;
 
     @PrePersist

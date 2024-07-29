@@ -12,11 +12,11 @@ import lombok.NoArgsConstructor;
 public class Complain {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ComplainID")
+    @Column(name = "complain_id")
     private long complainID;
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "UserID")
+    @JoinColumn(name = "user_id")
     private Users userID;
 }

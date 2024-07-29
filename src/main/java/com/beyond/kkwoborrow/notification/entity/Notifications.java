@@ -14,13 +14,13 @@ import lombok.NoArgsConstructor;
 public class Notifications {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "NotificationID")
+    @Column(name = "notification_id")
     @Schema(description = "문의사항 ID", example = "1")
     private long notificationId;
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "UserID")
+    @JoinColumn(name = "user_id")
     @Schema(description = "Users Entity", implementation = Users.class)
     private Users user;
 

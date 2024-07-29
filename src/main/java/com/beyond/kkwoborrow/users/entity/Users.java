@@ -19,31 +19,31 @@ public class Users {
     private Long userId;
 
     @NotNull
-    @Column(name = "UserName")
+    @Column(name = "user_name")
     private String userName;
 
     @NotNull
-    @Column(name = "Email")
+    @Column(name = "email")
     private String email;
 
     @NotNull
-    @Column(name = "Password")
+    @Column(name = "password")
     private String password;
 
     @NotNull
-    @Column(name = "UserRate")
+    @Column(name = "user_rate")
     @ColumnDefault("5")
     private double userRate;
 
     @NotNull
-    @Column(name = "UserType")
+    @Column(name = "user_type")
     private UserType userType;
 
     @NotNull
-    @Column(name = "Address")
+    @Column(name = "address")
     private String address;
 
-    @Column(name = "RateCount")
+    @Column(name = "rate_count")
     @ColumnDefault("0")
     private int rateCount;
 
