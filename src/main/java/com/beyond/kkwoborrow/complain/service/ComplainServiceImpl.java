@@ -2,12 +2,14 @@ package com.beyond.kkwoborrow.complain.service;
 
 import com.beyond.kkwoborrow.complain.dto.ComplainRequestDto;
 import com.beyond.kkwoborrow.complain.dto.ComplainResponseDto;
-import com.beyond.kkwoborrow.complain.dto.ComplainsResponseDto;
 import com.beyond.kkwoborrow.complain.entity.Complain;
 import com.beyond.kkwoborrow.complain.repository.ComplainRepository;
 import com.beyond.kkwoborrow.users.entity.Users;
 import com.beyond.kkwoborrow.users.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,7 +30,6 @@ public class ComplainServiceImpl implements ComplainService {
                 .orElseThrow(() -> new IllegalArgumentException("Invalid user ID"));
         Complain complain = new Complain();
         complain.setUserID(user);
-        // 추가 필드 설정이 필요한 경우 여기서 설정
         Complain savedComplain = complainRepository.save(complain);
         return new ComplainResponseDto(savedComplain);
     }
@@ -42,12 +43,11 @@ public class ComplainServiceImpl implements ComplainService {
 
     @Override
     public List<ComplainResponseDto> getAllComplains(int page, int numOfRows, int totalCount) {
-        int offset = (page - 1) * numOfRows;
-        List<Complain> complains = complainRepository.findAll().stream()
-                .skip(offset)
-                .limit(numOfRows)
+        Pageable pageable = PageRequest.of(page - 1, numOfRows, Sort.by("complainID").ascending());
+        List<Complain> complains = complainRepository.findAll(pageable).getContent();
+        return complains.stream()
+                .map(ComplainResponseDto::new)
                 .collect(Collectors.toList());
-        return complains.stream().map(ComplainResponseDto::new).collect(Collectors.toList());
     }
 
     @Override
