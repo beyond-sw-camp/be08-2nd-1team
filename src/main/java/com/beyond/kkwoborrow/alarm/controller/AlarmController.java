@@ -70,14 +70,14 @@ public class AlarmController {
     @Operation(summary = "알람 추가", description = "새로운 알람을 추가한다.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE)),
-            @ApiResponse(responseCode = "204", description = "NO CONTENT", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))
+            @ApiResponse(responseCode = "400", description = "BAD REQUEST", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
     public ResponseEntity<AlarmResponseDto> createAlarm(@RequestBody AlarmRequestDto newAlarm) {
         AlarmResponseDto alarmResponseDto = alarmService.save(newAlarm);
         if (alarmResponseDto != null) {
             return new ResponseEntity<>(alarmResponseDto, HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -86,7 +86,7 @@ public class AlarmController {
     @Operation(summary = "알람 정보 수정", description = "특정 알람의 정보를 수정한다.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE)),
-            @ApiResponse(responseCode = "204", description = "NO CONTENT", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))
+            @ApiResponse(responseCode = "400", description = "BAD REQUEST", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
     @Parameter(name = "alarm-id", description = "알람 ID", example = "1")
     public ResponseEntity<AlarmResponseDto> updateAlarm(@PathVariable("alarm-id") Long alarmId, @RequestBody AlarmRequestDto updateAlarm) {
@@ -94,7 +94,7 @@ public class AlarmController {
         if (alarmResponseDto != null) {
             return new ResponseEntity<>(alarmResponseDto, HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -103,7 +103,7 @@ public class AlarmController {
     @Operation(summary = "알람 삭제", description = "특정 알람을 삭제한다.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE)),
-            @ApiResponse(responseCode = "404", description = "NOT FOUND", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))
+            @ApiResponse(responseCode = "400", description = "BAD REQUEST", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
     @Parameter(name = "alarm-id", description = "알람 ID", example = "1")
     public ResponseEntity<Void> deleteAlarm(@PathVariable("alarm-id") Long alarmId) {
@@ -111,7 +111,7 @@ public class AlarmController {
             alarmService.deleteAlarm(alarmId);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (ResponseStatusException e) {
-            return new ResponseEntity<>(e.getStatusCode());
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 }
