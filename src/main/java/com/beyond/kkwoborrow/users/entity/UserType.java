@@ -1,6 +1,6 @@
 package com.beyond.kkwoborrow.users.entity;
 
 public enum UserType {
-    JOIN, // 가입
-    LEAVE // 탈퇴
+    USER, // 일반 회원
+    ADMIN // 관리자
 }

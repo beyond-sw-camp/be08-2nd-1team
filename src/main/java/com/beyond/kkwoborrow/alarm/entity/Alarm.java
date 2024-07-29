@@ -28,39 +28,31 @@ public class Alarm {
     private LocalDateTime meetTime;
 
     @NotNull
+    @Enumerated(EnumType.STRING)
     @Column(name = "AlarmType")
     private AlarmType alarmType;
 
     @ManyToOne
     @JoinColumn(name = "TransactionID")
-    private Rental transactionId;
-
+    private Rental transaction;
 
     @ManyToOne
     @JoinColumn(name = "ReserveID")
-    private Reservation reserveId;
+    private Reservation reservation;
 
     public Alarm(AlarmRequestDto alarmRequestDto, Rental transaction, Reservation reservation) {
         this.meetPlace = alarmRequestDto.getMeetPlace();
         this.meetTime = alarmRequestDto.getMeetTime();
         this.alarmType = alarmRequestDto.getAlarmType();
-        this.transactionId = transaction;
-        this.reserveId = reservation;
+        this.transaction = transaction;
+        this.reservation = reservation;
     }
 
     public void setAlarmRequestDto(AlarmRequestDto alarmRequestDto, Rental transaction, Reservation reservation) {
         this.meetPlace = alarmRequestDto.getMeetPlace();
         this.meetTime = alarmRequestDto.getMeetTime();
         this.alarmType = alarmRequestDto.getAlarmType();
-        this.transactionId = transaction;
-        this.reserveId = reservation;
-    }
-
-    public Rental getTransaction() {
-        return transactionId;
-    }
-
-    public Reservation getReservation() {
-        return reserveId;
+        this.transaction = transaction;
+        this.reservation = reservation;
     }
 }

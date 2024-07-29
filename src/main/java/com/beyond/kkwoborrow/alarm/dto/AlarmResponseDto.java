@@ -3,11 +3,9 @@ package com.beyond.kkwoborrow.alarm.dto;
 import com.beyond.kkwoborrow.alarm.entity.Alarm;
 import com.beyond.kkwoborrow.alarm.entity.AlarmType;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-@Setter
 @Getter
 public class AlarmResponseDto {
     private Long alarmId;
@@ -22,7 +20,11 @@ public class AlarmResponseDto {
         this.meetPlace = alarm.getMeetPlace();
         this.meetTime = alarm.getMeetTime();
         this.alarmType = alarm.getAlarmType();
-        this.transactionId = alarm.getTransaction().getTransactionID();
-        this.reservationId = alarm.getReservation().getReserveID();
+        if (alarm.getTransaction() != null) {
+            this.transactionId = alarm.getTransaction().getTransactionID();
+        }
+        if (alarm.getReservation() != null) {
+            this.reservationId = alarm.getReservation().getReserveID();
+        }
     }
 }

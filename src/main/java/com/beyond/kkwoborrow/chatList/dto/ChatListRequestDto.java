@@ -1,11 +1,11 @@
 package com.beyond.kkwoborrow.chatList.dto;
 
-import com.beyond.kkwoborrow.users.entity.Users;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 
 @Getter
+@Schema(description = "채팅 리스트 요청 데이터 전송 객체")
 public class ChatListRequestDto {
-    private long chatId;
-
-    private Users user;
+    @Schema(description = "사용자 ID", example = "1", required = true)
+    private Long userId;
 }

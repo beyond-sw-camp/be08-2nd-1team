@@ -1,5 +1,6 @@
 package com.beyond.kkwoborrow.chatList.service;
 
+import com.beyond.kkwoborrow.chatList.dto.ChatListRequestDto;
 import com.beyond.kkwoborrow.chatList.dto.ChatListResponseDto;
 import com.beyond.kkwoborrow.chatList.entity.ChatList;
 import com.beyond.kkwoborrow.chatList.repository.ChatListRepository;
@@ -7,6 +8,7 @@ import com.beyond.kkwoborrow.users.entity.Users;
 import com.beyond.kkwoborrow.users.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -31,28 +33,37 @@ public class ChatListServiceImpl implements ChatListService {
         Users user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("NOT FOUND USER : " + userId));
 
-        List<ChatList> chatLists = chatListRepository.findByUser(user);
+        List<ChatList> chatLists = chatListRepository.findAllByUser(user);
 
         return ChatListResponseDto.convert(chatLists);
     }
+    @Override
+    public ChatListResponseDto createChatList(ChatListRequestDto requestDto) {
+        Users user = userRepository.findById(requestDto.getUserId())
+                .orElseThrow(() -> new RuntimeException("NOT FOUND USER : " + requestDto.getUserId()));
 
+        ChatList chatList = new ChatList(user);
+
+        ChatList savedChatList = chatListRepository.save(chatList);
+
+        return new ChatListResponseDto(savedChatList);
+    }
+
+    @Transactional
     @Override
     public void delete(Long chatId) {
         ChatList chatList = chatListRepository.findById(chatId)
                 .orElseThrow(() -> new RuntimeException("NOT FOUND CHATLIST : " + chatId));
 
-        if(chatList != null) {
-            chatListRepository.deleteById(chatId);
-        }
+        chatListRepository.delete(chatList);
     }
 
+    @Transactional
     @Override
     public void deleteAll(Long userId) {
-        Users users = userRepository.findById(userId)
+        Users user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("NOT FOUND USER : " + userId));
 
-        if(users != null) {
-            chatListRepository.deleteAllByUser(users);
-        }
+        chatListRepository.deleteAllByUser(user);
     }
 }
