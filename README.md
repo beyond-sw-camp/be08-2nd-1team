@@ -24,6 +24,8 @@
 ## 🙋‍♀️ 팀원
 |**김도하**|**김민지**|**이은서**|**전현규**|**조은희**|
 |:--:|:--:|:--:|:--:|:--:|
+|<img src="https://github.com/user-attachments/assets/c618db9b-111d-47a0-90e6-1418d93d3d64" width="150" height="150" alt="image">|<img src = "https://github.com/user-attachments/assets/36c1552b-57a2-4f6a-9171-76afb4d98ee7" width="160" height="160" alt="image">|<img src = "https://github.com/user-attachments/assets/bed84c54-2ba4-41ed-9eb9-0aeae998d68b" width="160" height="160" alt="image">|<img src = "https://github.com/user-attachments/assets/52c27549-ba7b-45e9-937b-a1b828ccae14" width="180" height="180" alt="image">|<img src = "https://github.com/user-attachments/assets/5265dba8-d674-42fb-b55b-5d3a44fc02e7" width="150" height="150" alt="image">|
+
 
 <br><br>
 
@@ -35,14 +37,6 @@
 ## 💡 커밋 컨벤션
 Udacity Commit Convention: [Udacity Commit Convention]: https://udacity.github.io/git-styleguide/ "commit convention"
 
-### 메시지 구조
-```
-type: Subject
-
-body
-
-footer
-```
 ### 타입
 
 ```
@@ -57,23 +51,30 @@ chore: 빌드 업무 수정, 패키지 매니저 수정
 ```
 
 <details>
-<summary><h3>예시</h3></summary>
-
-```plaintext
-feat: add user authentication feature
-
-Implemented OAuth2 based authentication for users. This includes
-login, logout, and session management. The feature uses Spring Security
-and supports Google and Facebook OAuth2 providers.
-
-Issue: #123
-타입: feat (새로운 기능 추가)
-변경 요약: 사용자 인증 기능 추가
-상세 설명: OAuth2를 사용한 사용자 인증 기능을 구현했다는 설명. 로그인, 로그아웃, 세션 관리 등을 포함하며, Spring Security를 사용하고 Google과 Facebook OAuth2 제공자를 지원한다고 명시.
-이슈 번호: #123 (해당 기능과 관련된 이슈 번호)
-```
+    <summary>예시</summary>
+    <details>
+        <summary>코드 예시</summary>
+        <pre><code>
+        feat: add user authentication feature
+        Implemented OAuth2 based authentication for users. This includes
+        login, logout, and session management. The feature uses Spring Security
+        and supports Google and Facebook OAuth2 providers.
+        Issue: #123
+        타입: feat (새로운 기능 추가)
+        변경 요약: 사용자 인증 기능 추가
+        상세 설명: OAuth2를 사용한 사용자 인증 기능을 구현했다는 설명. 로그인, 로그아웃, 세션 관리 등을 포함하며, Spring Security를 사용하고 Google과 Facebook OAuth2 제공자를 지원한다고 명시.
+        이슈 번호: #123 (해당 기능과 관련된 이슈 번호)
+        </code></pre>
+    </details>
+    <details>
+        <summary>메시지 구조</summary>
+        <pre><code>
+        type: Subject
+        body
+        footer
+        </code></pre>
+    </details>
 </details>
-
 <br><br>
 
 ## ⏰ WBS
