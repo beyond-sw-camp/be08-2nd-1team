@@ -89,12 +89,9 @@ Issue: #123
 ## ✏️ 요구사항 정의서
 [요구사항 정의서](https://docs.google.com/spreadsheets/d/1de1OOTb09UcI2-DYKo18OVN5fab_uJpg2NqqRko5mMI/edit?gid=0#gid=0)
 <details>
-  <summary> 
-      요구사항 정의서 내용 
-  </summary>
+  <summary> 요구사항 정의서 내용 </summary>
+      <img src="https://github.com/user-attachments/assets/a236b4d7-68fd-4556-b155-5a188c9433c9" alt="요구사항 정의서">
 </details>
-
-![image](https://github.com/user-attachments/assets/69de04e8-56e9-4632-9612-6e2e9306a655)
 
 <br><br>
 
