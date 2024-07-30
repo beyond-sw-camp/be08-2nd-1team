@@ -101,6 +101,7 @@ Issue: #123
 <br><br>
 
 ## 🎯 주요 기능
+[주요 기능 서비스](https://github.com/beyond-sw-camp/be08-2nd-AOSynergy-BORROW/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5)
 
 <br><br>
 
