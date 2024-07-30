@@ -21,8 +21,10 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/v1/alarm-service")
 @Tag(name = "Alarms APIs", description = "알람 관련 API 목록")
 public class AlarmController {
+
     @Autowired
     private AlarmService alarmService;
 
@@ -63,7 +65,6 @@ public class AlarmController {
         AlarmsResponseDto response = new AlarmsResponseDto(HttpStatus.OK, alarms, page, totalCount);
         return ResponseEntity.ok(response);
     }
-
 
     // 알람 추가
     @PostMapping("/alarms")
