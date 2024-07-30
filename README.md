@@ -100,6 +100,8 @@ Issue: #123
   <summary> 테이블 정의서 내용 </summary>
 </details>
 
+![image](https://github.com/user-attachments/assets/0e7ae674-da07-4cf3-827d-7f34f532b570)
+
 <br><br>
 
 ## ✏️ ERD 설계
