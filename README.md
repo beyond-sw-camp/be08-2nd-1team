@@ -99,9 +99,8 @@ Issue: #123
 [테이블 정의서](https://docs.google.com/spreadsheets/d/1HpUgxdZUnYgveYcR3vomIEtFS47pDpVH/edit?gid=1148402777#gid=1148402777)
 <details>
   <summary> 테이블 정의서 내용 </summary>
+    <img src="https://github.com/user-attachments/assets/0e7ae674-da07-4cf3-827d-7f34f532b570" alt="테이블 정의서 내용">
 </details>
-
-![image](https://github.com/user-attachments/assets/0e7ae674-da07-4cf3-827d-7f34f532b570)
 
 <br><br>
 
