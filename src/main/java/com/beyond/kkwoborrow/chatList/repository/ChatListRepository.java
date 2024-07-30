@@ -12,4 +12,6 @@ public interface ChatListRepository extends JpaRepository<ChatList, Long> {
     List<ChatList> findAllByUser(Users user);
 
     void deleteAllByUser(Users user);
+
+    void deleteByChatIdAndUser_UserId(long chatId, long userId);
 }

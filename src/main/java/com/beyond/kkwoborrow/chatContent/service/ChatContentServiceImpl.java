@@ -14,7 +14,9 @@ import com.beyond.kkwoborrow.users.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -39,23 +41,38 @@ public class ChatContentServiceImpl implements ChatContentService {
 
         ChatContent chatContent = new ChatContent();
         chatContent.setDetail(requestDto.getDetail());
-        chatContent.setSendTime(requestDto.getSendTime());
+        chatContent.setSendTime(LocalDateTime.now());
         chatContent.setUser(user);
+        ChatList chatList = new ChatList(user);
+        chatListRepository.save(chatList);
 
-        if(requestDto.getChatId() != null) {
-            ChatList chatList = new ChatList(requestDto.getChatId(), user);
-            chatContent.setChatList(chatList);
-        }
-
-        if(requestDto.getNotificationId() != null) {
-            Notifications notification = new Notifications(requestDto.getNotificationId(), user);
-            chatContent.setNotification(notification);
-        }
+        chatContent.setChatList(chatList);
 
         ChatContent createdContent = chatContentRepository.save(chatContent);
 
         return new ChatContentResponseDto(createdContent);
     }
+
+    @Override
+    public ChatContentResponseDto saveNoti(ChatContentRequestDto requestDto) {
+        Users user = userRepository.findByUserIdAndUserTypeNot(requestDto.getUserId(), UserType.LEAVE)
+                .orElseThrow(() -> new RuntimeException("NOT FOUND USER : " + requestDto.getUserId()));
+
+        ChatContent chatContent = new ChatContent();
+        chatContent.setDetail(requestDto.getDetail());
+        chatContent.setSendTime(LocalDateTime.now());
+        chatContent.setUser(user);
+
+        Notifications notification = new Notifications(user);
+        notificationRepository.save(notification);
+
+        chatContent.setNotification(notification);
+
+        ChatContent createdContent = chatContentRepository.save(chatContent);
+
+        return new ChatContentResponseDto(createdContent);
+    }
+
 
     @Override
     public ChatContentResponseDto getChatContent(long contentId, long userId) {
@@ -85,6 +102,7 @@ public class ChatContentServiceImpl implements ChatContentService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional
     @Override
     public ChatContentResponseDto updateChatContent(long contentId, ChatContentRequestDto requestDto) {
         ChatContent chatContent = chatContentRepository.findById(contentId)
@@ -94,7 +112,7 @@ public class ChatContentServiceImpl implements ChatContentService {
                 .orElseThrow(() -> new RuntimeException("NOT FOUND USER : " + requestDto.getUserId()));
 
         chatContent.setDetail(requestDto.getDetail());
-        chatContent.setSendTime(requestDto.getSendTime());
+        chatContent.setSendTime(LocalDateTime.now());
         chatContent.setUser(user);
 
         ChatContent updatedChatContent = chatContentRepository.save(chatContent);
@@ -102,6 +120,7 @@ public class ChatContentServiceImpl implements ChatContentService {
         return new ChatContentResponseDto(updatedChatContent);
     }
 
+    @Transactional
     @Override
     public void deleteChatContent(long contentId, long userId) {
         Users user = userRepository.findByUserIdAndUserTypeNot(userId, UserType.LEAVE)
@@ -117,13 +136,19 @@ public class ChatContentServiceImpl implements ChatContentService {
 
         chatContentRepository.delete(chatContent);
 
-        if(!chatContentRepository.findById(chatContent.getChatList().getChatId()).isEmpty()) {
-            chatListRepository.deleteById(chatContent.getChatList().getChatId());
+        // 기존의 채팅 id가 더 이상 존재하지 않는다면 chatList에서도 delete
+        if(chatContent.getChatList() != null) {
+            if(chatContentRepository.findById(chatContent.getChatList().getChatId()).isEmpty()) {
+                chatListRepository.deleteByChatIdAndUser_UserId(chatContent.getChatList().getChatId(), userId);
+            }
         }
 
-        if(!chatContentRepository.findById(chatContent.getNotification().getNotificationId()).isEmpty()) {
-            notificationRepository.deleteById(chatContent.getNotification().getNotificationId());
+        if(chatContent.getNotification() != null) {
+            if(chatContentRepository.findById(chatContent.getNotification().getNotificationId()).isEmpty()) {
+                notificationRepository.deleteByNotificationIdAndUser_UserId(chatContent.getNotification().getNotificationId(), userId);
+            }
         }
+
     }
 
     @Override
@@ -139,8 +164,12 @@ public class ChatContentServiceImpl implements ChatContentService {
         }
 
         chatContentRepository.deleteAll(chatContents);
-        chatListRepository.deleteById(chatContents.getFirst().getChatList().getChatId());
-        notificationRepository.deleteById(chatContents.getFirst().getNotification().getNotificationId());
+        if(chatContents.getFirst().getChatList() != null) {
+            chatListRepository.deleteById(chatContents.getFirst().getChatList().getChatId());
+        }
+        if(chatContents.getFirst().getNotification() != null) {
+            notificationRepository.deleteById(chatContents.getFirst().getNotification().getNotificationId());
+        }
     }
 
 }

@@ -25,7 +25,7 @@ public class ChatContentController {
     private ChatContentService chatContentService;
 
     // 채팅 내용 등록
-    @PostMapping("/content")
+    @PostMapping("/content/chat")
     @Operation(summary = "채팅 내용 등록", description = "새로운 채팅 내용을 등록한다.")
     @ApiResponses(value = {
             @ApiResponse(
@@ -54,8 +54,37 @@ public class ChatContentController {
         }
     }
 
+    @PostMapping("/content/noti")
+    @Operation(summary = "문의사항 등록", description = "새로운 문의사항을 등록한다.")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "201",
+                    description = "문의사항이 성공적으로 등록되었습니다.",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ChatContentResponseDto.class)
+                    )
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "잘못된 요청 데이터",
+                    content = @Content(mediaType = "application/json")
+            )
+    })
+    public ResponseEntity<ChatContentResponseDto> createChatContentNoti(
+            @RequestBody @Parameter(description = "문의사항 내용 등록 요청 데이터", required = true) ChatContentRequestDto requestDto) {
+        ChatContentResponseDto responseDto = chatContentService.saveNoti(requestDto);
+
+        if(responseDto != null) {
+            return new ResponseEntity<>(responseDto, HttpStatus.CREATED);
+        }
+        else {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     // 채팅 내용 수정
-    @PatchMapping("/content/{content-id}")
+    @PatchMapping("/content/chat/{content-id}")
     @Operation(summary = "채팅 내용 수정", description = "특정 채팅 내용을 수정한다.")
     @ApiResponses(value = {
             @ApiResponse(
@@ -117,7 +146,7 @@ public class ChatContentController {
     }
 
     // 특정 채팅 내용 삭제
-    @DeleteMapping("/content/{content-id}/{user-id}")
+    @DeleteMapping("/content/chat/{content-id}/{user-id}")
     @Operation(summary = "채팅 내용 삭제", description = "특정 채팅 내용을 삭제한다.")
     @ApiResponses(value = {
             @ApiResponse(

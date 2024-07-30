@@ -34,7 +34,18 @@ public class ChatContentResponseDto {
         this.detail = content.getDetail();
         this.sendTime = content.getSendTime();
         this.userId = content.getUser().getUserId();
-        this.chatId = content.getChatList().getChatId();
-        this.notificationId = content.getNotification().getNotificationId();
+        if(content.getChatList() != null) {
+            this.chatId = content.getChatList().getChatId();
+        }
+        else {
+            this.chatId = null;
+        }
+
+        if(content.getNotification() != null) {
+            this.notificationId = content.getNotification().getNotificationId();
+        }
+        else {
+            this.notificationId = null;
+        }
     }
 }

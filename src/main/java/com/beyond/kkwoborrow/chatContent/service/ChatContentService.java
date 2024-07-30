@@ -17,4 +17,6 @@ public interface ChatContentService {
     void deleteChatContent(long contentId, long userId);
 
     void deleteChatContents(long userId);
+
+    ChatContentResponseDto saveNoti(ChatContentRequestDto requestDto);
 }
