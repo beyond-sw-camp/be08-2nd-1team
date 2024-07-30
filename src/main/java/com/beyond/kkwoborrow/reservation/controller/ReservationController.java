@@ -22,21 +22,21 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/v1/reservation-service")
 @Tag(name = "Reservations APIs", description = "예약 관련 API 목록")
-@RequestMapping("/reservations")
 public class ReservationController {
 
     @Autowired
     private ReservationService reservationService;
 
+    @GetMapping("/reservations/{reserve-id}")
     @Operation(summary = "예약 조회", description = "reserveId로 예약을 조회한다.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ReservationResponseDto.class))),
-            @ApiResponse(responseCode = "404", description = "NOT FOUND", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))
+            @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
-    @Parameter(name = "reserveId", description = "예약 ID", example = "1")
-    @GetMapping("/{reserveId}")
-    public ResponseEntity<ReservationResponseDto> getReservation(@PathVariable Long reserveId) {
+    @Parameter(name = "reserve-id", description = "예약 ID", example = "1")
+    public ResponseEntity<ReservationResponseDto> getReservation(@PathVariable("reserve-id") Long reserveId) {
         try {
             ReservationResponseDto reservationResponseDto = reservationService.getReservation(reserveId);
             return new ResponseEntity<>(reservationResponseDto, HttpStatus.OK);
@@ -45,16 +45,16 @@ public class ReservationController {
         }
     }
 
+    @GetMapping("/reservations")
     @Operation(summary = "예약 목록 조회", description = "모든 예약 목록을 조회한다.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ReservationsResponseDto.class))),
-            @ApiResponse(responseCode = "400", description = "BAD REQUEST", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))
+            @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
     @Parameters({
             @Parameter(name = "page", description = "페이지 번호", example = "1"),
             @Parameter(name = "numOfRows", description = "한 페이지 결과 수", example = "10")
     })
-    @GetMapping
     public ResponseEntity<ReservationsResponseDto> getAllReservations(@RequestParam int page, @RequestParam int numOfRows) {
         if (page <= 0 || numOfRows <= 0) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -68,12 +68,12 @@ public class ReservationController {
         return ResponseEntity.ok(response);
     }
 
+    @PostMapping("/reservations")
     @Operation(summary = "예약 생성", description = "새로운 예약을 생성한다.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Created", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ReservationResponseDto.class))),
             @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
-    @PostMapping
     public ResponseEntity<ReservationResponseDto> createReservation(@RequestBody ReservationRequestDto reservationRequestDto) {
         try {
             ReservationResponseDto reservationResponseDto = reservationService.save(reservationRequestDto);
@@ -83,14 +83,14 @@ public class ReservationController {
         }
     }
 
+    @DeleteMapping("/reservations/{reserve-id}")
     @Operation(summary = "예약 삭제", description = "reserveId로 예약을 삭제한다.")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE)),
+            @ApiResponse(responseCode = "200", description = "OK"),
             @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
-    @Parameter(name = "reserveId", description = "예약 ID", example = "1")
-    @DeleteMapping("/{reserveId}")
-    public ResponseEntity<Void> deleteReservation(@PathVariable Long reserveId) {
+    @Parameter(name = "reserve-id", description = "예약 ID", example = "1")
+    public ResponseEntity<Void> deleteReservation(@PathVariable("reserve-id") Long reserveId) {
         try {
             reservationService.deleteReservation(reserveId);
             return new ResponseEntity<>(HttpStatus.OK); // 삭제 성공 시 200 OK
