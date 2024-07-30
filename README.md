@@ -1,15 +1,20 @@
 # 👌꿔BORROW
-기간 : 2024.06.24 ~ 2024.07.31
+- 주제 : 자주 사용하지 않는 물건을 빌려주고 필요한 물건을 대여하는 서비스
+- 기간 : 2024.06.24 ~ 2024.07.31
 
 <br><br>
 
-## 🍀 프로젝트 개요 및 기대효과
-### [ 프로젝트 개요 ]
+## 🔎 프로젝트 개요
 - 코로나-19 이전에 소비심리가 얼어붙었지만 필요한 물건은 저렴하게 구매하고, 필요 없는 물건을 판매해 이익을 남기는 사람이 많아졌다.
 - 사람들의 인식이 변화하면서 “이전에 비해 중고물품에 대한 거부감이 덜한 것 같다”는 설문조사를 통해 다른 사람이 사용한 물건을 재사용 하는 것에 대한 우려와 불신이 낮아진 것 알 수 있다.
 - 공유 서비스를 사용하지 않은 사람들은 대부분 공유 서비스에 대한 인식이 없거나 다른 대체 수단이 많기 때문이었다. 이를 통해 꿔Borrow는 자주 사용하지 않는 물건을 빌려주고 필요한 물건을 대여하는 서비스입니다.
+<br>
 
-### [ 기대효과 ]
+![image](https://github.com/user-attachments/assets/f0e12139-4ad1-4389-9dfc-e15e3cf58003)
+
+<br>
+
+## 🍀 기대효과
 - 경제 활성화
     - 공유 서비스를 통해 물품을 공유하면서 판매자는 추가 수익을 얻고, 소비자는 구매 비용을 절약할 수 있어 자원의 유휴 시간을 줄여 효율적으로 활용함으로써 자원 활용의 효율성이 증가한다.
 - 환경 보호
@@ -30,8 +35,8 @@
 <br><br>
 
 ## 🛠️ 기술 스택
-<img src="https://img.shields.io/badge/gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white"> <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white"/> <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white"/> <img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white">
-<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"> <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
+<img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white"> <img src="https://img.shields.io/badge/gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white"> <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white"/> <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white"/> <img src="https://img.shields.io/badge/Spring Security-6DB33F?style=for-the-badge&logo=Spring Security&logoColor=white"> <img src="https://img.shields.io/badge/-Swagger-%23Clojure?style=for-the-badge&logo=swagger&logoColor=white"/> <img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=Postman&logoColor=white"/> <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"> <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white"> <img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white">
+
 <br><br>
 
 ## 💡 커밋 컨벤션
@@ -114,7 +119,7 @@ chore: 빌드 업무 수정, 패키지 매니저 수정
 
 <br><br>
 
-## API 명세서
+## 🗂️ API 명세서
 [API 명세서](https://www.notion.so/API-0f35268f5c644fd7a274c48a4497e6a6?pvs=4)
 
 <details>
@@ -126,10 +131,12 @@ chore: 빌드 업무 수정, 패키지 매니저 수정
 
 ## 🎯 주요 기능
 [주요 기능 서비스](https://github.com/beyond-sw-camp/be08-2nd-AOSynergy-BORROW/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5)
+- 로그인, 로그아웃, 및 회원 관리 기능
+- 게시글 기능
+- 물품 대여 및 반납 기능
+- 물품 예약 및 알림 기능
+- 채팅, 문의사항 및 신고 기능
 
 <br><br>
 
 ## 📌 테스트
-<details>
-  <summary> 테스트 내용 </summary>
-</details>
