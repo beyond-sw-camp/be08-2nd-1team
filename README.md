@@ -82,6 +82,8 @@ Issue: #123
   <summary> WBS 문서 내용 </summary>
 </details>
 
+![image](https://github.com/user-attachments/assets/8841f1ab-f3cc-4852-a7cf-4fc2ae33bbb5)
+
 <br><br>
 
 ## ✏️ 요구사항 정의서
@@ -91,6 +93,8 @@ Issue: #123
       요구사항 정의서 내용 
   </summary>
 </details>
+
+![image](https://github.com/user-attachments/assets/69de04e8-56e9-4632-9612-6e2e9306a655)
 
 <br><br>
 
