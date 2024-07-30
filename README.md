@@ -89,7 +89,7 @@ Issue: #123
 <details>
   <summary> 
       요구사항 정의서 내용 
-      (https://github.com/user-attachments/assets/a236b4d7-68fd-4556-b155-5a188c9433c9)
+      ![image](https://github.com/user-attachments/assets/a236b4d7-68fd-4556-b155-5a188c9433c9)
   </summary>
 </details>
 
