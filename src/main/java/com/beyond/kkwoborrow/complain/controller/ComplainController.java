@@ -14,12 +14,12 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @Tag(name = "Complains APIs", description = "신고 관련 API 목록")
@@ -32,19 +32,23 @@ public class ComplainController {
     @Operation(summary = "신고 조회", description = "complainId로 신고를 조회한다.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ComplainResponseDto.class))),
-            @ApiResponse(responseCode = "404", description = "NOT FOUND", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))
+            @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
     @Parameter(name = "complainId", description = "신고 ID", example = "1")
     @GetMapping("/{complainId}")
     public ResponseEntity<ComplainResponseDto> getComplain(@PathVariable Long complainId) {
-        ComplainResponseDto complainResponseDto = complainService.getComplain(complainId);
-        return new ResponseEntity<>(complainResponseDto, HttpStatus.OK);
+        try {
+            ComplainResponseDto complainResponseDto = complainService.getComplain(complainId);
+            return new ResponseEntity<>(complainResponseDto, HttpStatus.OK);
+        } catch (ResponseStatusException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @Operation(summary = "신고 목록 조회", description = "모든 신고 목록을 조회한다.")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE)),
-            @ApiResponse(responseCode = "404", description = "NOT FOUND", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))
+            @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ComplainsResponseDto.class))),
+            @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
     @Parameters({
             @Parameter(name = "page", description = "페이지 번호", example = "1"),
@@ -52,8 +56,11 @@ public class ComplainController {
     })
     @GetMapping
     public ResponseEntity<ComplainsResponseDto> getAllComplains(@RequestParam int page, @RequestParam int numOfRows) {
+        if (page <= 0 || numOfRows <= 0) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         int totalCount = complainService.getTotalCount();
-        if (page <= 0 || numOfRows <= 0 || (page - 1) * numOfRows >= totalCount) {
+        if ((page - 1) * numOfRows >= totalCount) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         List<ComplainResponseDto> complains = complainService.getAllComplains(page, numOfRows, totalCount);
@@ -68,19 +75,27 @@ public class ComplainController {
     })
     @PostMapping
     public ResponseEntity<ComplainResponseDto> createComplain(@RequestBody ComplainRequestDto complainRequestDto) {
-        ComplainResponseDto complainResponseDto = complainService.save(complainRequestDto);
-        return new ResponseEntity<>(complainResponseDto, HttpStatus.CREATED);
+        try {
+            ComplainResponseDto complainResponseDto = complainService.save(complainRequestDto);
+            return new ResponseEntity<>(complainResponseDto, HttpStatus.CREATED);
+        } catch (ResponseStatusException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 
     @Operation(summary = "신고 삭제", description = "complainId로 신고를 삭제한다.")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "204", description = "NO CONTENT", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE)),
-            @ApiResponse(responseCode = "404", description = "NOT FOUND", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))
+            @ApiResponse(responseCode = "200", description = "OK"),
+            @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
     @Parameter(name = "complainId", description = "신고 ID", example = "1")
     @DeleteMapping("/{complainId}")
     public ResponseEntity<Void> deleteComplain(@PathVariable Long complainId) {
-        complainService.deleteComplain(complainId);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        try {
+            complainService.deleteComplain(complainId);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (ResponseStatusException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 }
