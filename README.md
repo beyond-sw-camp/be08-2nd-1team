@@ -111,6 +111,15 @@ Issue: #123
     <img src="https://github.com/user-attachments/assets/69fde1fd-86f1-44d2-9773-7f0932ef7621" alt="ERD 설계 내용">
 </details>
 
+<br><br>
+
+## API 명세서
+[API 명세서](https://www.notion.so/API-0f35268f5c644fd7a274c48a4497e6a6?pvs=4)
+
+<details>
+    <summary> API 명세서 내용 </summary>
+    <img src="https://github.com/user-attachments/assets/f15ee05b-6995-47b4-bdc7-56a8b47aef78" alt="API 명세서 내용">
+</details>
 
 <br><br>
 
