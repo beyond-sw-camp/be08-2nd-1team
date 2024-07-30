@@ -107,8 +107,10 @@ Issue: #123
 ## ✏️ ERD 설계
 [ERD Cloud](https://www.erdcloud.com/d/CDfBLfLMCZDoTdqp4)
 
-![꿔BORROW](https://github.com/user-attachments/assets/69fde1fd-86f1-44d2-9773-7f0932ef7621)
-
+<details>
+  <summary> 테이블 정의서 내용 </summary>
+    <img src="https://github.com/user-attachments/assets/69fde1fd-86f1-44d2-9773-7f0932ef7621" alt="테이블 정의서 내용">
+</details>
 
 
 <br><br>
