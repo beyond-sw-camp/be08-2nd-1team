@@ -41,10 +41,12 @@ public class ChatContentServiceImpl implements ChatContentService {
         chatContent.setDetail(requestDto.getDetail());
         chatContent.setSendTime(requestDto.getSendTime());
         chatContent.setUser(user);
+
         if(requestDto.getChatId() != null) {
             ChatList chatList = new ChatList(requestDto.getChatId(), user);
             chatContent.setChatList(chatList);
         }
+
         if(requestDto.getNotificationId() != null) {
             Notifications notification = new Notifications(requestDto.getNotificationId(), user);
             chatContent.setNotification(notification);
@@ -91,12 +93,6 @@ public class ChatContentServiceImpl implements ChatContentService {
         Users user = userRepository.findByUserIdAndUserTypeNot(requestDto.getUserId(), UserType.LEAVE)
                 .orElseThrow(() -> new RuntimeException("NOT FOUND USER : " + requestDto.getUserId()));
 
-        ChatList chatList = chatListRepository.findById(requestDto.getChatId())
-                .orElseThrow(() -> new RuntimeException("NOT FOUND CHAT LIST : " + requestDto.getChatId()));
-
-        Notifications notification = notificationRepository.findById(requestDto.getNotificationId())
-                .orElseThrow(() -> new RuntimeException("NOT FOUND NOTIFICATION : " + requestDto.getNotificationId()));
-
         chatContent.setDetail(requestDto.getDetail());
         chatContent.setSendTime(requestDto.getSendTime());
         chatContent.setUser(user);
@@ -120,6 +116,14 @@ public class ChatContentServiceImpl implements ChatContentService {
         }
 
         chatContentRepository.delete(chatContent);
+
+        if(!chatContentRepository.findById(chatContent.getChatList().getChatId()).isEmpty()) {
+            chatListRepository.deleteById(chatContent.getChatList().getChatId());
+        }
+
+        if(!chatContentRepository.findById(chatContent.getNotification().getNotificationId()).isEmpty()) {
+            notificationRepository.deleteById(chatContent.getNotification().getNotificationId());
+        }
     }
 
     @Override
@@ -135,6 +139,8 @@ public class ChatContentServiceImpl implements ChatContentService {
         }
 
         chatContentRepository.deleteAll(chatContents);
+        chatListRepository.deleteById(chatContents.getFirst().getChatList().getChatId());
+        notificationRepository.deleteById(chatContents.getFirst().getNotification().getNotificationId());
     }
 
 }
