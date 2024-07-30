@@ -76,10 +76,6 @@ Issue: #123
 
 <br><br>
 
-## 주요 기능
-[주요 기능 서비스](https://github.com/beyond-sw-camp/be08-2nd-AOSynergy-BORROW/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5)
-
-
 ## ⏰ WBS
 [WBS 문서](https://docs.google.com/spreadsheets/d/1a-3ZwOdtigPyTlqB04m4GaJN9n2l6s8l3Ynwk6f4-O4/edit?gid=1835326347#gid=1835326347)
 <details>
@@ -105,6 +101,7 @@ Issue: #123
 <br><br>
 
 ## 🎯 주요 기능
+[주요 기능 서비스](https://github.com/beyond-sw-camp/be08-2nd-AOSynergy-BORROW/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5)
 
 <br><br>
 
