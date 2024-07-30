@@ -103,6 +103,8 @@ Issue: #123
 ## ✏️ ERD 설계
 [ERD Cloud](https://www.erdcloud.com/d/CDfBLfLMCZDoTdqp4)
 
+![스크린샷 2024-07-16 145802](https://github.com/user-attachments/assets/bb168c75-c5cb-4a61-9822-07542113ae10)
+
 <br><br>
 
 ## 🎯 주요 기능
