@@ -79,21 +79,32 @@ Issue: #123
 ## ⏰ WBS
 [WBS 문서](https://docs.google.com/spreadsheets/d/1a-3ZwOdtigPyTlqB04m4GaJN9n2l6s8l3Ynwk6f4-O4/edit?gid=1835326347#gid=1835326347)
 <details>
-  <summary>
-    
-  ![wbs1](https://github.com/user-attachments/assets/06618437-3814-415b-a477-7ba3ecdb93ec)
-
-  </summary>
-  
+  <summary> WBS 문서 내용 </summary>
 </details>
 
 <br><br>
 
 ## ✏️ 요구사항 정의서
 [요구사항 정의서](https://docs.google.com/spreadsheets/d/1de1OOTb09UcI2-DYKo18OVN5fab_uJpg2NqqRko5mMI/edit?gid=0#gid=0)
+<details>
+  <summary> 요구사항 정의서 내용 </summary>
+</details>
 
 <br><br>
 
 ## ✏️ 테이블 정의서
 [테이블 정의서](https://docs.google.com/spreadsheets/d/1HpUgxdZUnYgveYcR3vomIEtFS47pDpVH/edit?gid=1148402777#gid=1148402777)
+<details>
+  <summary> 테이블 정의서 내용 </summary>
+</details>
 
+<br><br>
+
+## 🎯 주요 기능
+
+<br><br>
+
+## 📌 테스트
+<details>
+  <summary> 테스트 내용 </summary>
+</details>
