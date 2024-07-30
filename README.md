@@ -80,9 +80,8 @@ Issue: #123
 [WBS 문서](https://docs.google.com/spreadsheets/d/1a-3ZwOdtigPyTlqB04m4GaJN9n2l6s8l3Ynwk6f4-O4/edit?gid=1835326347#gid=1835326347)
 <details>
   <summary> WBS 문서 내용 </summary>
+    <img src="https://github.com/user-attachments/assets/8841f1ab-f3cc-4852-a7cf-4fc2ae33bbb5" alt="요구사항 정의서">
 </details>
-
-![image](https://github.com/user-attachments/assets/8841f1ab-f3cc-4852-a7cf-4fc2ae33bbb5)
 
 <br><br>
 
@@ -108,8 +107,8 @@ Issue: #123
 [ERD Cloud](https://www.erdcloud.com/d/CDfBLfLMCZDoTdqp4)
 
 <details>
-  <summary> 테이블 정의서 내용 </summary>
-    <img src="https://github.com/user-attachments/assets/69fde1fd-86f1-44d2-9773-7f0932ef7621" alt="테이블 정의서 내용">
+  <summary> ERD 설계 내용 </summary>
+    <img src="https://github.com/user-attachments/assets/69fde1fd-86f1-44d2-9773-7f0932ef7621" alt="ERD 설계 내용">
 </details>
 
 
