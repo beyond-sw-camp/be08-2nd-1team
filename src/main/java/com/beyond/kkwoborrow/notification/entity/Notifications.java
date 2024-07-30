@@ -27,4 +27,9 @@ public class Notifications {
     public Notifications(Users user) {
         this.user = user;
     }
+
+    public Notifications(long notificationId, Users user) {
+        this.notificationId = notificationId;
+        this.user = user;
+    }
 }

@@ -1,8 +1,10 @@
 package com.beyond.kkwoborrow.notification.service;
 
+import com.beyond.kkwoborrow.notification.dto.NotificationRequestDto;
 import com.beyond.kkwoborrow.notification.dto.NotificationResponseDto;
 import com.beyond.kkwoborrow.notification.entity.Notifications;
 import com.beyond.kkwoborrow.notification.repository.NotificationRepository;
+import com.beyond.kkwoborrow.users.entity.UserType;
 import com.beyond.kkwoborrow.users.entity.Users;
 import com.beyond.kkwoborrow.users.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,19 +15,22 @@ import java.util.List;
 
 @Service
 public class NotificationServiceImpl implements NotificationService {
+    @Autowired
     private NotificationRepository notificationRepository;
 
+    @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    public NotificationServiceImpl(NotificationRepository notificationRepository, UserRepository userRepository) {
-        this.notificationRepository = notificationRepository;
-        this.userRepository = userRepository;
-    }
-
     @Override
-    public Notifications save(Notifications notification) {
-        return notificationRepository.save(notification);
+    public NotificationResponseDto save(NotificationRequestDto requestDto) {
+        Users user = userRepository.findByUserIdAndUserTypeNot(requestDto.getUserId(), UserType.LEAVE)
+                .orElseThrow(() -> new RuntimeException("NOT FOUND USER : " + requestDto.getUserId()));
+
+        Notifications notification = new Notifications(user);
+
+        notificationRepository.save(notification);
+
+        return new NotificationResponseDto(notification);
     }
 
     @Override
@@ -38,7 +43,7 @@ public class NotificationServiceImpl implements NotificationService {
 
     @Override
     public List<NotificationResponseDto> getNotiLists(Long userId) {
-        Users user = userRepository.findById(userId)
+        Users user = userRepository.findByUserIdAndUserTypeNot(userId, UserType.LEAVE)
                 .orElseThrow(() -> new RuntimeException("NOT FOUND USER : " + userId));
 
         List<Notifications> notifications = notificationRepository.findAllByUser(user);
@@ -58,7 +63,7 @@ public class NotificationServiceImpl implements NotificationService {
     @Transactional
     @Override
     public void deleteAll(Long userId) {
-        Users user = userRepository.findById(userId)
+        Users user = userRepository.findByUserIdAndUserTypeNot(userId, UserType.LEAVE)
                 .orElseThrow(() -> new RuntimeException("NOT FOUND USER : " + userId));
 
         notificationRepository.deleteAllByUser(user);

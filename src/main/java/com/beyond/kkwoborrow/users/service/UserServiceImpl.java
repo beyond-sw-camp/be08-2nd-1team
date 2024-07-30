@@ -2,6 +2,7 @@ package com.beyond.kkwoborrow.users.service;
 
 import com.beyond.kkwoborrow.users.dto.UserRequestDto;
 import com.beyond.kkwoborrow.users.dto.UserResponseDto;
+import com.beyond.kkwoborrow.users.entity.UserType;
 import com.beyond.kkwoborrow.users.entity.Users;
 import com.beyond.kkwoborrow.users.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,19 +24,24 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponseDto getUser(Long userId) {
-        Optional<Users> user = userRepository.findById(userId);
+        Optional<Users> user = userRepository.findByUserIdAndUserTypeNot(userId, UserType.LEAVE);
 
         return user.map(UserResponseDto::new).orElse(null);
     }
 
     @Override
     public void deleteUser(Long userId) {
-        userRepository.deleteById(userId);
+        Optional<Users> checkUser = userRepository.findByUserIdAndUserTypeNot(userId, UserType.LEAVE);
+        if (checkUser.isPresent()) {
+            Users user = checkUser.get();
+            user.setUserType(UserType.LEAVE);
+            userRepository.save(user);
+        }
     }
 
     @Override
     public UserResponseDto updateUser(Long userId, UserRequestDto userInfo) {
-        Optional<Users> updateUser = userRepository.findById(userId);
+        Optional<Users> updateUser = userRepository.findByUserIdAndUserTypeNot(userId, UserType.LEAVE);
 
         if (updateUser.isPresent()){
             System.out.println(updateUser.get());

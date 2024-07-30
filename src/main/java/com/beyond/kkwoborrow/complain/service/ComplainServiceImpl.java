@@ -4,6 +4,7 @@ import com.beyond.kkwoborrow.complain.dto.ComplainRequestDto;
 import com.beyond.kkwoborrow.complain.dto.ComplainResponseDto;
 import com.beyond.kkwoborrow.complain.entity.Complain;
 import com.beyond.kkwoborrow.complain.repository.ComplainRepository;
+import com.beyond.kkwoborrow.users.entity.UserType;
 import com.beyond.kkwoborrow.users.entity.Users;
 import com.beyond.kkwoborrow.users.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class ComplainServiceImpl implements ComplainService {
 
     @Override
     public ComplainResponseDto save(ComplainRequestDto complainRequestDto) {
-        Users user = userRepository.findById(complainRequestDto.getUserId())
+        Users user = userRepository.findByUserIdAndUserTypeNot(complainRequestDto.getUserId(), UserType.LEAVE)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid user ID"));
         Complain complain = new Complain();
         complain.setUserID(user);

@@ -67,10 +67,12 @@ public class Users {
 
         if (user.getUserType().equals("USER")){
             this.userType = UserType.USER;
-        } else{
+        } else if (user.getUserType().equals("ADMIN")) {
             this.userType = UserType.ADMIN;
-
+        } else{
+            this.userType = UserType.LEAVE;
         }
+
         this.address = user.getAddress();
 
         // TEST 미입력 값 처리

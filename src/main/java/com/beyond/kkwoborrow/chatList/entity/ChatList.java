@@ -1,6 +1,5 @@
 package com.beyond.kkwoborrow.chatList.entity;
 
-import com.beyond.kkwoborrow.chatList.dto.ChatListRequestDto;
 import com.beyond.kkwoborrow.users.entity.Users;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
@@ -26,6 +25,11 @@ public class ChatList {
     private Users user;
 
     public ChatList(Users user) {
+        this.user = user;
+    }
+
+    public ChatList(long chatId, Users user) {
+        this.chatId = chatId;
         this.user = user;
     }
 }

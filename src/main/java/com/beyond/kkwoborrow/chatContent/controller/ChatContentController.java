@@ -1,16 +1,8 @@
 package com.beyond.kkwoborrow.chatContent.controller;
 
-import com.beyond.kkwoborrow.chatContent.entity.ChatContent;
-import com.beyond.kkwoborrow.chatList.entity.ChatList;
-import com.beyond.kkwoborrow.chatList.repository.ChatListRepository;
 import com.beyond.kkwoborrow.chatContent.dto.ChatContentRequestDto;
 import com.beyond.kkwoborrow.chatContent.dto.ChatContentResponseDto;
 import com.beyond.kkwoborrow.chatContent.service.ChatContentService;
-import com.beyond.kkwoborrow.notification.entity.Notifications;
-import com.beyond.kkwoborrow.notification.repository.NotificationRepository;
-import com.beyond.kkwoborrow.users.entity.UserType;
-import com.beyond.kkwoborrow.users.entity.Users;
-import com.beyond.kkwoborrow.users.repository.UserRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -32,15 +24,6 @@ public class ChatContentController {
     @Autowired
     private ChatContentService chatContentService;
 
-    @Autowired
-    private ChatListRepository chatListRepository;
-
-    @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private NotificationRepository notificationRepository;
-
     // 채팅 내용 등록
     @PostMapping("/content")
     @Operation(summary = "채팅 내용 등록", description = "새로운 채팅 내용을 등록한다.")
@@ -61,28 +44,14 @@ public class ChatContentController {
     })
     public ResponseEntity<ChatContentResponseDto> createChatContent(
             @RequestBody @Parameter(description = "채팅 내용 등록 요청 데이터", required = true) ChatContentRequestDto requestDto) {
+        ChatContentResponseDto responseDto = chatContentService.save(requestDto);
 
-        Users user = userRepository.findById(requestDto.getUserId())
-                .orElseThrow(() -> new RuntimeException("NOT FOUND USER : " + requestDto.getUserId()));
-
-        ChatList chatList = chatListRepository.findById(requestDto.getChatId())
-                .orElseThrow(() -> new RuntimeException("NOT FOUND CHAT LIST : " + requestDto.getChatId()));
-
-        Notifications notification = notificationRepository.findById(requestDto.getNotificationId())
-                .orElseThrow(() -> new RuntimeException("NOT FOUND NOTIFICATION : " + requestDto.getNotificationId()));
-
-        ChatContent chatContent = new ChatContent();
-        chatContent.setDetail(requestDto.getDetail());
-        chatContent.setSendTime(requestDto.getSendTime());
-        chatContent.setUser(user);
-        chatContent.setChatList(chatList);
-        chatContent.setNotification(notification);
-
-        ChatContent savedChatContent = chatContentService.save(chatContent);
-
-        ChatContentResponseDto responseDto = new ChatContentResponseDto(savedChatContent);
-
-        return new ResponseEntity<>(responseDto, HttpStatus.CREATED);
+        if(responseDto != null) {
+            return new ResponseEntity<>(responseDto, HttpStatus.CREATED);
+        }
+        else {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     // 채팅 내용 수정
@@ -108,7 +77,12 @@ public class ChatContentController {
             @RequestBody @Parameter(description = "채팅 내용 수정 요청 데이터", required = true) ChatContentRequestDto requestDto) {
         ChatContentResponseDto responseDto = chatContentService.updateChatContent(contentId, requestDto);
 
-        return new ResponseEntity<>(responseDto, HttpStatus.OK);
+        if(responseDto != null) {
+            return new ResponseEntity<>(responseDto, HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
     // 특정 채팅 내용 조회

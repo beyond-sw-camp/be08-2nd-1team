@@ -52,7 +52,12 @@ public class ChatListController {
             @PathVariable("chat-id") Long chatId) {
         ChatListResponseDto responseDto = chatListService.getChatList(chatId);
 
-        return new ResponseEntity<>(responseDto, HttpStatus.OK);
+        if(responseDto != null) {
+            return new ResponseEntity<>(responseDto, HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @GetMapping("/chats/user/{user-id}")
@@ -105,7 +110,13 @@ public class ChatListController {
             @Parameter(description = "생성할 채팅 목록 데이터", required = true)
             @RequestBody ChatListRequestDto requestDto) {
         ChatListResponseDto responseDto = chatListService.createChatList(requestDto);
-        return new ResponseEntity<>(responseDto, HttpStatus.CREATED);
+
+        if(responseDto != null) {
+            return new ResponseEntity<>(responseDto, HttpStatus.CREATED);
+        }
+        else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @DeleteMapping("/chat/{chat-id}")

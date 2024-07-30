@@ -8,10 +8,11 @@ import com.beyond.kkwoborrow.chatList.entity.ChatList;
 import com.beyond.kkwoborrow.chatList.repository.ChatListRepository;
 import com.beyond.kkwoborrow.notification.entity.Notifications;
 import com.beyond.kkwoborrow.notification.repository.NotificationRepository;
+import com.beyond.kkwoborrow.users.entity.UserType;
 import com.beyond.kkwoborrow.users.entity.Users;
 import com.beyond.kkwoborrow.users.repository.UserRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,17 +33,35 @@ public class ChatContentServiceImpl implements ChatContentService {
     private NotificationRepository notificationRepository;
 
     @Override
-    public ChatContent save(ChatContent chatContent) {
-        return chatContentRepository.save(chatContent);
+    public ChatContentResponseDto save(ChatContentRequestDto requestDto) {
+        Users user = userRepository.findByUserIdAndUserTypeNot(requestDto.getUserId(), UserType.LEAVE)
+                .orElseThrow(() -> new RuntimeException("NOT FOUND USER : " + requestDto.getUserId()));
+
+        ChatContent chatContent = new ChatContent();
+        chatContent.setDetail(requestDto.getDetail());
+        chatContent.setSendTime(requestDto.getSendTime());
+        chatContent.setUser(user);
+        if(requestDto.getChatId() != null) {
+            ChatList chatList = new ChatList(requestDto.getChatId(), user);
+            chatContent.setChatList(chatList);
+        }
+        if(requestDto.getNotificationId() != null) {
+            Notifications notification = new Notifications(requestDto.getNotificationId(), user);
+            chatContent.setNotification(notification);
+        }
+
+        ChatContent createdContent = chatContentRepository.save(chatContent);
+
+        return new ChatContentResponseDto(createdContent);
     }
 
     @Override
     public ChatContentResponseDto getChatContent(long contentId, long userId) {
-        Users user = userRepository.findById(userId)
-                .orElseThrow(() -> new RuntimeException("NOT FOUND USER : " + userId));
+        Users user = userRepository.findByUserIdAndUserTypeNot(userId, UserType.LEAVE)
+                .orElseThrow(() -> new EntityNotFoundException("NOT FOUND USER : " + userId));
 
         ChatContent chatContent = chatContentRepository.findById(contentId)
-                .orElseThrow(() -> new RuntimeException("NOT FOUND CHATCONTENT : " + contentId));
+                .orElseThrow(() -> new EntityNotFoundException("NOT FOUND CHATCONTENT : " + contentId));
 
         // 사용자 권한 확인
         if(chatContent.getUser() != user) {
@@ -54,7 +73,7 @@ public class ChatContentServiceImpl implements ChatContentService {
 
     @Override
     public List<ChatContentResponseDto> getChatContents(long userId) {
-        Users user = userRepository.findById(userId)
+        Users user = userRepository.findByUserIdAndUserTypeNot(userId, UserType.LEAVE)
                 .orElseThrow(() -> new RuntimeException("NOT FOUND USER : " + userId));
 
         List<ChatContent> chatContents = chatContentRepository.findAllByUser(user);
@@ -69,7 +88,7 @@ public class ChatContentServiceImpl implements ChatContentService {
         ChatContent chatContent = chatContentRepository.findById(contentId)
                 .orElseThrow(() -> new RuntimeException("NOT FOUND CONTENT : " + contentId));
 
-        Users user = userRepository.findById(requestDto.getUserId())
+        Users user = userRepository.findByUserIdAndUserTypeNot(requestDto.getUserId(), UserType.LEAVE)
                 .orElseThrow(() -> new RuntimeException("NOT FOUND USER : " + requestDto.getUserId()));
 
         ChatList chatList = chatListRepository.findById(requestDto.getChatId())
@@ -78,12 +97,9 @@ public class ChatContentServiceImpl implements ChatContentService {
         Notifications notification = notificationRepository.findById(requestDto.getNotificationId())
                 .orElseThrow(() -> new RuntimeException("NOT FOUND NOTIFICATION : " + requestDto.getNotificationId()));
 
-
         chatContent.setDetail(requestDto.getDetail());
         chatContent.setSendTime(requestDto.getSendTime());
         chatContent.setUser(user);
-        chatContent.setChatList(chatList);
-        chatContent.setNotification(notification);
 
         ChatContent updatedChatContent = chatContentRepository.save(chatContent);
 
@@ -92,7 +108,7 @@ public class ChatContentServiceImpl implements ChatContentService {
 
     @Override
     public void deleteChatContent(long contentId, long userId) {
-        Users user = userRepository.findById(userId)
+        Users user = userRepository.findByUserIdAndUserTypeNot(userId, UserType.LEAVE)
                 .orElseThrow(() -> new RuntimeException("NOT FOUND USER : " + userId));
 
         ChatContent chatContent = chatContentRepository.findById(contentId)
@@ -108,7 +124,7 @@ public class ChatContentServiceImpl implements ChatContentService {
 
     @Override
     public void deleteChatContents(long userId) {
-        Users user = userRepository.findById(userId)
+        Users user = userRepository.findByUserIdAndUserTypeNot(userId, UserType.LEAVE)
                 .orElseThrow(() -> new RuntimeException("NOT FOUND USER : " + userId));
 
         List<ChatContent> chatContents = chatContentRepository.findAllByUser(user);

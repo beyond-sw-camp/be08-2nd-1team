@@ -54,7 +54,7 @@ public class UserController {
     }
 
     // 회원 삭제
-    @DeleteMapping("/users/{user-id}")
+    @PatchMapping("/users/delete/{user-id}")
     @Operation(summary = "회원 정보 삭제", description = "특정 회원의 정보를 삭제한다.")
     public void deleteUser(@Parameter(description = "회원 번호", example = "1") @PathVariable("user-id") Long userId) {
         userService.deleteUser(userId);

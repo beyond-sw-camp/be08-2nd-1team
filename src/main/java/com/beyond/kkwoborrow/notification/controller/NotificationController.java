@@ -2,9 +2,7 @@ package com.beyond.kkwoborrow.notification.controller;
 
 import com.beyond.kkwoborrow.notification.dto.NotificationRequestDto;
 import com.beyond.kkwoborrow.notification.dto.NotificationResponseDto;
-import com.beyond.kkwoborrow.notification.entity.Notifications;
 import com.beyond.kkwoborrow.notification.service.NotificationService;
-import com.beyond.kkwoborrow.users.entity.Users;
 import com.beyond.kkwoborrow.users.repository.UserRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -24,15 +22,8 @@ import java.util.List;
 @RequestMapping("/api/v1/notification-service")
 @Tag(name = "Notification APIs", description = "문의사항 목록 관련 API 목록")
 public class NotificationController {
-    private final NotificationService notificationService;
-
-    private UserRepository userRepository;
-
     @Autowired
-    public NotificationController(NotificationService notificationService, UserRepository userRepository) {
-        this.notificationService = notificationService;
-        this.userRepository = userRepository;
-    }
+    private NotificationService notificationService;
 
     // 특정 문의사항 조회
     @GetMapping("/notification/{noti-id}")
@@ -107,16 +98,14 @@ public class NotificationController {
     public ResponseEntity<NotificationResponseDto> createNotification(
             @Parameter(description = "문의사항 목록 생성 요청 데이터", required = true)
             @RequestBody NotificationRequestDto requestDto) {
-        Users user = userRepository.findById(requestDto.getUserId())
-                .orElseThrow(() -> new RuntimeException("NOT FOUND USER : " + requestDto.getUserId()));
+        NotificationResponseDto responseDto =  notificationService.save(requestDto);
 
-        Notifications notification = new Notifications(user);
-
-        Notifications savedNotification =  notificationService.save(notification);
-
-        NotificationResponseDto responseDto = new NotificationResponseDto(savedNotification);
-
-        return new ResponseEntity<>(responseDto, HttpStatus.CREATED);
+        if(responseDto != null) {
+            return new ResponseEntity<>(responseDto, HttpStatus.CREATED);
+        }
+        else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
     // 특정 문의사항 삭제
