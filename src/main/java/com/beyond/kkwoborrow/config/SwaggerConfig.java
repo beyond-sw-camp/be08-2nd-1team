@@ -10,8 +10,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @OpenAPIDefinition(
         info = @Info(
-                title = "Department Service",
-                description = "Department Service API",
+                title = "kkwoborrow Service",
+                description = "kkwoborrow Service API",
                 version="v1.0.0"
         )
 )
