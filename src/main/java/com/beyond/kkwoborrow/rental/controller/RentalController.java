@@ -13,8 +13,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/api/v1/rental-service")
 @Tag(name = "Rental APIs", description = "렌탈 관련 API 목록")
-@RequestMapping("/rental")
 public class RentalController {
     @Autowired
     private RentalService rentalService;

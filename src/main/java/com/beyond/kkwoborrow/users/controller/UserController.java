@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/api/v1/user-service")
 @Tag(name = "Users APIs", description = "회원 관련 API 목록")
 public class UserController {
     @Autowired

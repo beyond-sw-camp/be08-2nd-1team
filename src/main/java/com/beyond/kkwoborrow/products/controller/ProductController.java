@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/v1/product-service")
 @Tag(name = "Products APIs", description = "제품 관련 API 목록")
 public class ProductController {
     @Autowired
