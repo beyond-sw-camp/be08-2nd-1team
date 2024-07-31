@@ -123,33 +123,42 @@ chore: 빌드 업무 수정, 패키지 매니저 수정
 
 <details>
     <summary>회원가입</summary>
+    <img src="https://github.com/user-attachments/assets/269ce5c3-cd51-4a9d-9c6b-1e9cb92b5b86" alt="회원가입">
 </details>
 <details>
     <summary>회원</summary>
+    <img src="https://github.com/user-attachments/assets/d757ee88-a511-4d98-8407-37a221c73d0e" alt="회원">
 </details>
 <details>
     <summary>제품</summary>
+    <img src="https://github.com/user-attachments/assets/87e01b53-d1b1-4720-8544-a3b81b4d7fdb" alt="제품">
 </details>
 <details>
     <summary>대여/반납</summary>
+    <img src="https://github.com/user-attachments/assets/16692ea4-789b-4aa3-be66-26ad0b9ba1a8" alt="대여/반납">
 </details>
 <details>
     <summary>예약</summary>
+     <img src="https://github.com/user-attachments/assets/26d165a0-e912-4565-b20b-8c13b2d13e67" alt="예약">
 </details>
 <details>
     <summary>게시글</summary>
+     <img src="https://github.com/user-attachments/assets/7b1f7b46-8c1b-4972-9dfe-45223a3b71b9" alt="게시글">
 </details>
 <details>
     <summary>채팅</summary>
 </details>
 <details>
     <summary>리뷰</summary>
+    <img src="https://github.com/user-attachments/assets/4db0aa17-c189-487c-aec8-6d01430d7254" alt="리뷰">
 </details>
 <details>
     <summary>알람</summary>
+    <img src="https://github.com/user-attachments/assets/a882870f-8cce-4bea-baae-3de707feb9d4" alt="알람">
 </details>
 <details>
     <summary>신고</summary>
+    <img src="https://github.com/user-attachments/assets/efcff866-1a88-4b2e-a4f5-44864f0c4f35" alt="신고">
 </details>
 
 
