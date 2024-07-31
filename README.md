@@ -99,7 +99,7 @@ chore: 빌드 업무 수정, 패키지 매니저 수정
 <br><br>
 
 ## ✏️ 테이블 정의서
-[테이블 정의서](https://docs.google.com/spreadsheets/d/1HpUgxdZUnYgveYcR3vomIEtFS47pDpVH/edit?gid=1148402777#gid=1148402777)
+[테이블 정의서](https://docs.google.com/spreadsheets/d/1HpUgxdZUnYgveYcR3vomIEtFS47pDpVH/edit?usp=sharing&ouid=102494685802367589810&rtpof=true&sd=true)
 <details>
   <summary> 테이블 정의서 내용 </summary>
     <img src="https://github.com/user-attachments/assets/0e7ae674-da07-4cf3-827d-7f34f532b570" alt="테이블 정의서 내용">
