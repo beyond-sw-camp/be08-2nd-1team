@@ -127,7 +127,7 @@ chore: 빌드 업무 수정, 패키지 매니저 수정
 </details>
 <details>
     <summary>회원</summary>
-    <img src="https://github.com/user-attachments/assets/d757ee88-a511-4d98-8407-37a221c73d0e" alt="회원">
+    <img src="https://github.com/user-attachments/assets/157cbc17-bb8b-40b9-8b83-8c20787229ae" alt="회원">
 </details>
 <details>
     <summary>제품</summary>
