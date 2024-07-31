@@ -14,6 +14,7 @@ public class UserResponseDto {
     private double userRate;
     private UserType userType;
     private String address;
+    private String password;
 
     public UserResponseDto(Users user) {
         this.userName = user.getUserName();
@@ -21,5 +22,6 @@ public class UserResponseDto {
         this.userRate = user.getUserRate();
         this.userType = user.getUserType();
         this.address = user.getAddress();
+        this.password = user.getPassword();
     }
 }

@@ -23,7 +23,7 @@ public class Users {
     private String userName;
 
     @NotNull
-    @Column(name = "email")
+    @Column(name = "Email")
     private String email;
 
     @NotNull
@@ -31,24 +31,28 @@ public class Users {
     private String password;
 
     @NotNull
-    @Column(name = "user_rate")
+    @Column(name = "UserRate")
     @ColumnDefault("5")
     private double userRate;
 
     @NotNull
-    @Column(name = "user_type")
+//    @Convert(converter = UserTypeConverter.class)
+    @Column(name = "UserType")
     private UserType userType;
 
     @NotNull
-    @Column(name = "address")
+    @Column(name = "Address")
     private String address;
 
-    @Column(name = "rate_count")
+    @Column(name = "RateCount")
     @ColumnDefault("0")
     private int rateCount;
 
     public Users(UserRequestDto user) {
         this.setUserRequestDto(user);
+    }
+
+    public Users(String username, String encodedPassword) {
     }
 
     public void setUserRequestDto(UserRequestDto user){
@@ -67,12 +71,10 @@ public class Users {
 
         if (user.getUserType().equals("USER")){
             this.userType = UserType.USER;
-        } else if (user.getUserType().equals("ADMIN")) {
-            this.userType = UserType.ADMIN;
         } else{
-            this.userType = UserType.LEAVE;
-        }
+            this.userType = UserType.ADMIN;
 
+        }
         this.address = user.getAddress();
 
         // TEST 미입력 값 처리
@@ -81,6 +83,9 @@ public class Users {
         } else {
             this.rateCount = user.getRateCount();
         }
+    }
+    public boolean checkPassword(String password){
+        return this.password.equals(password);
     }
 }
 

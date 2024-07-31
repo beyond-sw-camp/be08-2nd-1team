@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blank Page</title>
+    <script>
+        function goToUserInfo() {
+            const username = 'userName'; // Replace with the actual username
+            window.location.href = `/user-info?username=${username}`;
+        }
+
+        function goToUserPosts() {
+            const username = 'userName'; // Replace with the actual username
+            window.location.href = `/posts`;
+        }
+
+        function logout() {
+            // 로그아웃 처리 로직
+            fetch('/logout', {
+                method: 'POST', // 로그아웃 처리가 POST 방식일 경우
+                credentials: 'same-origin', // 필요 시 쿠키와 인증 정보를 포함
+            })
+                .then(response => {
+                    if (response.ok) {
+                        window.location.href = '/login'; // 로그아웃 후 리다이렉트할 페이지
+                    } else {
+                        alert('Logout failed');
+                    }
+                })
+                .catch(error => {
+                    console.error('Logout error:', error);
+                    alert('Logout error occurred');
+                });
+        }
+    </script>
+</head>
+<body>
+<button onclick="goToUserInfo()">Go to User Info</button>
+<br><br>
+<button onclick="goToUserPosts()">View Posts</button>
+<br><br>
+<button onclick="logout()">Logout</button>
+</body>
+</html>
