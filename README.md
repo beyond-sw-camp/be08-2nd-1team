@@ -179,4 +179,5 @@ chore: 빌드 업무 수정, 패키지 매니저 수정
 <br><br>
 
 ## 📌 테스트
-[테스트 결과](https://www.notion.so/a5374073e0b14bcfa7d674048bd326ee?pvs=4)
+- [테스트 케이스](https://docs.google.com/spreadsheets/d/143o5n9nA6vpQzF20SksNWiuAj6WC3vqVa4pi4SzSH9s/edit?gid=0#gid=0)
+- [테스트 결과](https://www.notion.so/a5374073e0b14bcfa7d674048bd326ee?pvs=4)
