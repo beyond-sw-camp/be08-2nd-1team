@@ -160,6 +160,10 @@ chore: 빌드 업무 수정, 패키지 매니저 수정
     <summary>신고</summary>
     <img src="https://github.com/user-attachments/assets/efcff866-1a88-4b2e-a4f5-44864f0c4f35" alt="신고">
 </details>
+<details>
+    <summary>문의사항</summary>
+    <img src="https://github.com/user-attachments/assets/65a2d0cc-4cd7-4cf5-bf6d-c55969a57739" alt="문의사항">
+</details>
 
 
 <br><br>
