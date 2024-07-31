@@ -19,7 +19,7 @@ public class Users {
     private Long userId;
 
     @NotNull
-    @Column(name = "UserName")
+    @Column(name = "user_name")
     private String userName;
 
     @NotNull
@@ -27,7 +27,7 @@ public class Users {
     private String email;
 
     @NotNull
-    @Column(name = "Password")
+    @Column(name = "password")
     private String password;
 
     @NotNull
@@ -36,6 +36,7 @@ public class Users {
     private double userRate;
 
     @NotNull
+//    @Convert(converter = UserTypeConverter.class)
     @Column(name = "UserType")
     private UserType userType;
 
@@ -49,6 +50,9 @@ public class Users {
 
     public Users(UserRequestDto user) {
         this.setUserRequestDto(user);
+    }
+
+    public Users(String username, String encodedPassword) {
     }
 
     public void setUserRequestDto(UserRequestDto user){
@@ -79,6 +83,9 @@ public class Users {
         } else {
             this.rateCount = user.getRateCount();
         }
+    }
+    public boolean checkPassword(String password){
+        return this.password.equals(password);
     }
 }
 

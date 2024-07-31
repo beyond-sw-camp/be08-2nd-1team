@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blank Page</title>
+    <script>
+        function goToUserInfo() {
+            // 여기에 로그인한 사용자의 username을 추가하세요
+            const username = 'userName'; // 사용자 이름을 동적으로 설정해야 함
+            window.location.href = `/user-info?username=${username}`;
+        }
+    </script>
+</head>
+<body>
+<button onclick="goToUserInfo()">Go to User Info</button>
+</body>
+</html>

@@ -2,6 +2,7 @@ package com.beyond.kkwoborrow.users.service;
 
 import com.beyond.kkwoborrow.users.dto.UserRequestDto;
 import com.beyond.kkwoborrow.users.dto.UserResponseDto;
+import com.beyond.kkwoborrow.users.entity.UserType;
 import com.beyond.kkwoborrow.users.entity.Users;
 import com.beyond.kkwoborrow.users.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,14 +13,31 @@ import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
+
+
+    private final UserRepository userRepository;
+
+    private final PasswordEncoder passwordEncoder;
+
     @Autowired
-    UserRepository userRepository;
+    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
+
     @Override
-    public UserResponseDto save(UserRequestDto user) {
-        Users newUser = new Users(user);
-        Users saveUser = userRepository.save(newUser);
-        newUser.setPassword(passwordEncoder.encode(user.getPassword())); // 비밀번호 암호화
-        return new UserResponseDto(saveUser);
+    public UserResponseDto save(UserRequestDto userDto) {
+        if (userDto.getPassword() == null) {
+            throw new IllegalArgumentException("Password cannot be null");
+        }
+        Users user = new Users();
+        user.setUserName(userDto.getUserName());
+        user.setEmail(userDto.getEmail());
+        user.setAddress(userDto.getAddress());
+        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
+        user.setUserType(UserType.valueOf("USER")); // 기본값으로 설정
+        Users savedUser = userRepository.save(user);
+        return new UserResponseDto(savedUser);
     }
 
     @Override
@@ -50,15 +68,28 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponseDto findByUsername(String username) {
-        Users user = userRepository.findByUserName(username);
-        if (user != null) {
+        Optional<Users> userOptional = userRepository.findByUserName(username);
+        if (userOptional.isPresent()) {
+            Users user = userOptional.get();
             return new UserResponseDto(user);
         } else {
             return null;
         }
     }
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    // 비밀번호 확인 메서드
+    public boolean checkPassword(String rawPassword, String storedPassword) {
+        return passwordEncoder.matches(rawPassword, storedPassword);
+    }
+
+
+
+
+    public void saveUser(String username, String rawPassword) {
+        String encodedPassword = passwordEncoder.encode(rawPassword);
+        Users user = new Users(username, encodedPassword);
+        userRepository.save(user);
+    }
+
 
 }
