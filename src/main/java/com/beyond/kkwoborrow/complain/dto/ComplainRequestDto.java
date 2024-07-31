@@ -7,6 +7,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ComplainRequestDto {
-    @Schema(description = "post_id", example = "1")
+    @Schema(description = "user_id", example = "1")
     private Long userId;
 }
