@@ -55,7 +55,7 @@ public class ChatContentController {
     }
 
     @PostMapping("/content/noti")
-    @Operation(summary = "문의사항 등록", description = "새로운 문의사항을 등록한다.")
+    @Operation(summary = "문의사항 내용 등록", description = "새로운 문의사항을 등록한다.")
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "201",
@@ -85,11 +85,11 @@ public class ChatContentController {
 
     // 채팅 내용 수정
     @PatchMapping("/content/chat/{content-id}")
-    @Operation(summary = "채팅 내용 수정", description = "특정 채팅 내용을 수정한다.")
+    @Operation(summary = "채팅/문의사항 내용 수정", description = "특정 채팅/문의사항 내용을 수정한다.")
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "채팅 내용 수정 성공",
+                    description = "채팅/문의사항 내용 수정 성공",
                     content = @Content(
                             mediaType = "application/json",
                             schema = @Schema(implementation = ChatContentResponseDto.class)
@@ -97,13 +97,13 @@ public class ChatContentController {
             ),
             @ApiResponse(
                     responseCode = "404",
-                    description = "채팅 내용을 찾을 수 없음",
+                    description = "채팅/문의사항 내용을 찾을 수 없음",
                     content = @Content(mediaType = "application/json")
             )
     })
     public ResponseEntity<ChatContentResponseDto> updateChatContent(
-            @PathVariable("content-id") @Parameter(description = "채팅 내용 ID", example = "1") long contentId,
-            @RequestBody @Parameter(description = "채팅 내용 수정 요청 데이터", required = true) ChatContentRequestDto requestDto) {
+            @PathVariable("content-id") @Parameter(description = "채팅/문의사항 내용 ID", example = "1") long contentId,
+            @RequestBody @Parameter(description = "채팅/문의사항 내용 수정 요청 데이터", required = true) ChatContentRequestDto requestDto) {
         ChatContentResponseDto responseDto = chatContentService.updateChatContent(contentId, requestDto);
 
         if(responseDto != null) {
@@ -114,13 +114,13 @@ public class ChatContentController {
         }
     }
 
-    // 특정 채팅 내용 조회
+    // 특정 채팅/문의사항 내용 조회
     @GetMapping("/content/{content-id}/{user-id}")
-    @Operation(summary = "채팅 내용 조회", description = "특정 채팅 내용을 조회한다.")
+    @Operation(summary = "채팅/문의사항 내용 조회", description = "특정 채팅/문의사항 내용을 조회한다.")
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "채팅 내용 조회 성공",
+                    description = "채팅/문의사항 내용 조회 성공",
                     content = @Content(
                             mediaType = "application/json",
                             schema = @Schema(implementation = ChatContentResponseDto.class)
@@ -128,12 +128,12 @@ public class ChatContentController {
             ),
             @ApiResponse(
                     responseCode = "404",
-                    description = "채팅 내용을 찾을 수 없음",
+                    description = "채팅/문의사항 내용을 찾을 수 없음",
                     content = @Content(mediaType = "application/json")
             )
     })
     public ResponseEntity<ChatContentResponseDto> getChatContent(
-            @PathVariable("content-id") @Parameter(description = "채팅 내용 ID", example = "1") long contentId,
+            @PathVariable("content-id") @Parameter(description = "채팅/문의사항 내용 ID", example = "1") long contentId,
             @PathVariable("user-id") @Parameter(description = "사용자 ID", example = "1") long userId) {
         ChatContentResponseDto responseDto = chatContentService.getChatContent(contentId, userId);
 
@@ -145,17 +145,17 @@ public class ChatContentController {
         }
     }
 
-    // 특정 채팅 내용 삭제
+    // 특정 채팅/문의사항 내용 삭제
     @DeleteMapping("/content/chat/{content-id}/{user-id}")
-    @Operation(summary = "채팅 내용 삭제", description = "특정 채팅 내용을 삭제한다.")
+    @Operation(summary = "채팅/문의사항 내용 삭제", description = "특정 채팅/문의사항 내용을 삭제한다.")
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "204",
-                    description = "채팅 내용 삭제 성공"
+                    description = "채팅/문의사항 내용 삭제 성공"
             ),
             @ApiResponse(
                     responseCode = "404",
-                    description = "채팅 내용을 찾을 수 없음",
+                    description = "채팅/문의사항 내용을 찾을 수 없음",
                     content = @Content(mediaType = "application/json")
             )
     })
@@ -167,13 +167,13 @@ public class ChatContentController {
         return ResponseEntity.noContent().build();
     }
 
-    // 모든 채팅 내용 조회
+    // 모든 채팅/문의사항 내용 조회
     @GetMapping("/contents/{user-id}")
-    @Operation(summary = "해당 사용자의 모든 채팅 내용 조회", description = "해당 사용자의 모든 채팅 내용을 조회한다.")
+    @Operation(summary = "해당 사용자의 모든 채팅/문의사항 내용 조회", description = "해당 사용자의 모든 채팅/문의사항 내용을 조회한다.")
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "모든 채팅 내용 조회 성공",
+                    description = "모든 채팅/문의사항 내용 조회 성공",
                     content = @Content(
                             mediaType = "application/json",
                             schema = @Schema(implementation = ChatContentResponseDto.class)
@@ -181,7 +181,7 @@ public class ChatContentController {
             ),
             @ApiResponse(
                     responseCode = "404",
-                    description = "사용자 또는 채팅 내용을 찾을 수 없음",
+                    description = "사용자 또는 채팅/문의사항 내용을 찾을 수 없음",
                     content = @Content(mediaType = "application/json")
             )
     })
@@ -192,25 +192,9 @@ public class ChatContentController {
         return new ResponseEntity<>(responseDtoList, HttpStatus.OK);
     }
 
-    // 모든 채팅 내용 삭제
+    // 모든 채팅/문의사항 내용 삭제
     @DeleteMapping("/contents/{user-id}")
-    @Operation(summary = "해당 사용자의 모든 채팅 내용 삭제", description = "해당 사용자의 모든 채팅 내용을 삭제한다.")
-    @ApiResponses(value = {
-            @ApiResponse(
-                    responseCode = "204",
-                    description = "모든 채팅 내용 삭제 성공"
-            ),
-            @ApiResponse(
-                    responseCode = "404",
-                    description = "채팅 내용을 찾을 수 없음",
-                    content = @Content(mediaType = "application/json")
-            ),
-            @ApiResponse(
-                    responseCode = "403",
-                    description = "권한이 없어서 삭제할 수 없음",
-                    content = @Content(mediaType = "application/json")
-            )
-    })
+    @Operation(summary = "해당 사용자의 모든 채팅/문의사항 내용 삭제", description = "해당 사용자의 모든 채팅/문의사항 내용을 삭제한다.")
     public ResponseEntity<Void> deleteAllChatContents(
             @PathVariable("user-id") @Parameter(description = "사용자 ID", example = "1") long userId) {
 

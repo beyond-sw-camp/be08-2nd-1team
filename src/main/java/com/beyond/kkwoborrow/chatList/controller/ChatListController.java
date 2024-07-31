@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/chatList-service")
+@RequestMapping("/api/v1/chatlist-service")
 @Tag(name = "ChatList APIs", description = "채팅 목록 관련 API 목록")
 public class ChatListController {
     private final ChatListService chatListService;
@@ -48,7 +48,7 @@ public class ChatListController {
             }
     )
     public ResponseEntity<ChatListResponseDto> getChatList(
-            @Parameter(description = "조회할 채팅 ID", example = "1", required = true)
+            @Parameter(description = "조회할 채팅 목록 ID", example = "1", required = true)
             @PathVariable("chat-id") Long chatId) {
         ChatListResponseDto responseDto = chatListService.getChatList(chatId);
 
