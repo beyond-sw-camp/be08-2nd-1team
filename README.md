@@ -173,6 +173,8 @@ chore: 빌드 업무 수정, 패키지 매니저 수정
 - [테스트 케이스](https://docs.google.com/spreadsheets/d/143o5n9nA6vpQzF20SksNWiuAj6WC3vqVa4pi4SzSH9s/edit?gid=0#gid=0)
 - [테스트 결과](https://www.notion.so/493b2029af3649ce843d4b43082114a4?v=46642e9b3a3f4749aa40217241f08f84&pvs=4)
 
+<br><br>
+
 ## 🎉 회고록
 |**김도하**|**김민지**|**이은서**|**전현규**|**조은희**|
 |:--:|:--:|:--:|:--:|:--:|
