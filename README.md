@@ -119,7 +119,37 @@ chore: 빌드 업무 수정, 패키지 매니저 수정
 [API 명세서](https://www.notion.so/API-0f35268f5c644fd7a274c48a4497e6a6?pvs=4)
 <br>
 
-<img src="https://github.com/user-attachments/assets/f15ee05b-6995-47b4-bdc7-56a8b47aef78" alt="API 명세서 내용">
+<details>
+    <summary>회원가입</summary>
+</details>
+<details>
+    <summary>회원</summary>
+</details>
+<details>
+    <summary>제품</summary>
+</details>
+<details>
+    <summary>대여/반납</summary>
+</details>
+<details>
+    <summary>예약</summary>
+</details>
+<details>
+    <summary>게시글</summary>
+</details>
+<details>
+    <summary>채팅</summary>
+</details>
+<details>
+    <summary>리뷰</summary>
+</details>
+<details>
+    <summary>알람</summary>
+</details>
+<details>
+    <summary>신고</summary>
+</details>
+
 
 <br><br>
 
