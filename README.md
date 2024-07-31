@@ -35,7 +35,7 @@
 <br><br>
 
 ## 🛠️ 기술 스택
-<img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white"> <img src="https://img.shields.io/badge/gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white"> <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white"/> <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white"/> <img src="https://img.shields.io/badge/Spring Security-6DB33F?style=for-the-badge&logo=Spring Security&logoColor=white"> <img src="https://img.shields.io/badge/-Swagger-%23Clojure?style=for-the-badge&logo=swagger&logoColor=white"/> <img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=Postman&logoColor=white"/> <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"> <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white"> <img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white">
+<img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white"> <img src="https://img.shields.io/badge/gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white"> <img src="https://img.shields.io/badge/mariaDB-003545?style=for-the-badge&logo=mariaDB&logoColor=white"/> <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white"/> <img src="https://img.shields.io/badge/Spring Security-6DB33F?style=for-the-badge&logo=Spring Security&logoColor=white"> <img src="https://img.shields.io/badge/-Swagger-%23Clojure?style=for-the-badge&logo=swagger&logoColor=white"/> <img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=Postman&logoColor=white"/> <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"> <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white"> <img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white">
 
 <br><br>
 
@@ -84,24 +84,24 @@ chore: 빌드 업무 수정, 패키지 매니저 수정
 
 ## ⏰ WBS
 [WBS 문서](https://docs.google.com/spreadsheets/d/1a-3ZwOdtigPyTlqB04m4GaJN9n2l6s8l3Ynwk6f4-O4/edit?gid=1835326347#gid=1835326347)
-<details>
-  <summary> WBS 문서 내용 </summary>
-    <img src="https://github.com/user-attachments/assets/8841f1ab-f3cc-4852-a7cf-4fc2ae33bbb5" alt="요구사항 정의서">
-</details>
+<br>
+
+<img src="https://github.com/user-attachments/assets/8841f1ab-f3cc-4852-a7cf-4fc2ae33bbb5" alt="요구사항 정의서">
 
 <br><br>
 
 ## ✏️ 요구사항 정의서
 [요구사항 정의서](https://docs.google.com/spreadsheets/d/1de1OOTb09UcI2-DYKo18OVN5fab_uJpg2NqqRko5mMI/edit?gid=0#gid=0)
+<br>
 <details>
-  <summary> 요구사항 정의서 내용 </summary>
-      <img src="https://github.com/user-attachments/assets/a236b4d7-68fd-4556-b155-5a188c9433c9" alt="요구사항 정의서">
+  <summary> 테이블 정의서 내용 </summary>
+    <img src="https://github.com/user-attachments/assets/a236b4d7-68fd-4556-b155-5a188c9433c9" alt="요구사항 정의서">
 </details>
 
 <br><br>
 
 ## ✏️ 테이블 정의서
-[테이블 정의서](https://docs.google.com/spreadsheets/d/1HpUgxdZUnYgveYcR3vomIEtFS47pDpVH/edit?gid=1148402777#gid=1148402777)
+[테이블 정의서](https://docs.google.com/spreadsheets/d/1HpUgxdZUnYgveYcR3vomIEtFS47pDpVH/edit?usp=sharing&ouid=102494685802367589810&rtpof=true&sd=true)
 <details>
   <summary> 테이블 정의서 내용 </summary>
     <img src="https://github.com/user-attachments/assets/0e7ae674-da07-4cf3-827d-7f34f532b570" alt="테이블 정의서 내용">
@@ -111,21 +111,60 @@ chore: 빌드 업무 수정, 패키지 매니저 수정
 
 ## ✏️ ERD 설계
 [ERD Cloud](https://www.erdcloud.com/d/CDfBLfLMCZDoTdqp4)
+<br>
 
-<details>
-  <summary> ERD 설계 내용 </summary>
-    <img src="https://github.com/user-attachments/assets/69fde1fd-86f1-44d2-9773-7f0932ef7621" alt="ERD 설계 내용">
-</details>
+<img src="https://github.com/user-attachments/assets/69fde1fd-86f1-44d2-9773-7f0932ef7621" alt="ERD 설계 내용">
 
 <br><br>
 
 ## 🗂️ API 명세서
 [API 명세서](https://www.notion.so/API-0f35268f5c644fd7a274c48a4497e6a6?pvs=4)
+<br>
 
 <details>
-    <summary> API 명세서 내용 </summary>
-    <img src="https://github.com/user-attachments/assets/f15ee05b-6995-47b4-bdc7-56a8b47aef78" alt="API 명세서 내용">
+    <summary>회원가입</summary>
+    <img src="https://github.com/user-attachments/assets/269ce5c3-cd51-4a9d-9c6b-1e9cb92b5b86" alt="회원가입">
 </details>
+<details>
+    <summary>회원</summary>
+    <img src="https://github.com/user-attachments/assets/157cbc17-bb8b-40b9-8b83-8c20787229ae" alt="회원">
+</details>
+<details>
+    <summary>제품</summary>
+    <img src="https://github.com/user-attachments/assets/87e01b53-d1b1-4720-8544-a3b81b4d7fdb" alt="제품">
+</details>
+<details>
+    <summary>대여/반납</summary>
+    <img src="https://github.com/user-attachments/assets/16692ea4-789b-4aa3-be66-26ad0b9ba1a8" alt="대여/반납">
+</details>
+<details>
+    <summary>예약</summary>
+     <img src="https://github.com/user-attachments/assets/26d165a0-e912-4565-b20b-8c13b2d13e67" alt="예약">
+</details>
+<details>
+    <summary>게시글</summary>
+     <img src="https://github.com/user-attachments/assets/7b1f7b46-8c1b-4972-9dfe-45223a3b71b9" alt="게시글">
+</details>
+<details>
+    <summary>채팅</summary>
+</details>
+<details>
+    <summary>리뷰</summary>
+    <img src="https://github.com/user-attachments/assets/4db0aa17-c189-487c-aec8-6d01430d7254" alt="리뷰">
+</details>
+<details>
+    <summary>알람</summary>
+    <img src="https://github.com/user-attachments/assets/a882870f-8cce-4bea-baae-3de707feb9d4" alt="알람">
+</details>
+<details>
+    <summary>신고</summary>
+    <img src="https://github.com/user-attachments/assets/efcff866-1a88-4b2e-a4f5-44864f0c4f35" alt="신고">
+</details>
+<details>
+    <summary>문의사항</summary>
+    <img src="https://github.com/user-attachments/assets/65a2d0cc-4cd7-4cf5-bf6d-c55969a57739" alt="문의사항">
+</details>
+
 
 <br><br>
 
@@ -140,3 +179,5 @@ chore: 빌드 업무 수정, 패키지 매니저 수정
 <br><br>
 
 ## 📌 테스트
+- [테스트 케이스](https://docs.google.com/spreadsheets/d/143o5n9nA6vpQzF20SksNWiuAj6WC3vqVa4pi4SzSH9s/edit?gid=0#gid=0)
+- [테스트 결과](https://www.notion.so/a5374073e0b14bcfa7d674048bd326ee?pvs=4)
