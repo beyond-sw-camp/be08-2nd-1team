@@ -1,5 +1,6 @@
 package com.beyond.kkwoborrow.users.repository;
 
+import com.beyond.kkwoborrow.users.entity.UserType;
 import com.beyond.kkwoborrow.users.entity.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+
 @Repository
 public interface UserRepository extends JpaRepository<Users, Long> {
 
@@ -15,4 +17,3 @@ public interface UserRepository extends JpaRepository<Users, Long> {
     Optional<Users> findByEmail(@Param("email") String email);
 
     Optional<Users> findByUserName(String username);
-}

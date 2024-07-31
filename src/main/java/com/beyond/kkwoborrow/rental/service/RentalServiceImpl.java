@@ -6,21 +6,24 @@ import com.beyond.kkwoborrow.rental.dto.RentalRequestDto;
 import com.beyond.kkwoborrow.rental.dto.RentalResponseDto;
 import com.beyond.kkwoborrow.rental.entity.Rental;
 import com.beyond.kkwoborrow.rental.repository.RentalRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
 public class RentalServiceImpl implements RentalService {
+    @Autowired
     private RentalRepository rentalRepository;
 
+    @Autowired
     private PostRepository postRepository;
 
     @Override
-    public RentalResponseDto searchProduct(RentalRequestDto rentalRequestDto) {
-        Posts post = postRepository.findById(rentalRequestDto.getPostId()).orElseThrow(() -> new IllegalArgumentException("Invalid PostID"));
+    public RentalResponseDto Rent(Long postId) {
+        Posts post = postRepository.findById(postId).orElseThrow(() -> new IllegalArgumentException("Invalid PostID"));
 
-        Optional<Rental> rental = rentalRepository.findById(rentalRequestDto.getPostId());
+        Optional<Rental> rental = rentalRepository.findById(postId);
 
         return rental.map(RentalResponseDto::new).orElse(null);
     }

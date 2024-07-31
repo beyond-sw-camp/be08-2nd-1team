@@ -4,6 +4,7 @@ import com.beyond.kkwoborrow.products.dto.ProductRequestDto;
 import com.beyond.kkwoborrow.products.dto.ProductResponseDto;
 import com.beyond.kkwoborrow.products.entity.Products;
 import com.beyond.kkwoborrow.products.repository.ProductRepository;
+import com.beyond.kkwoborrow.users.entity.UserType;
 import com.beyond.kkwoborrow.users.entity.Users;
 import com.beyond.kkwoborrow.users.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class ProductServiceImpl implements ProductService {
     public ProductResponseDto save(ProductRequestDto product) {
         Products newProduct = new Products(product);
         // user 찾아서 넣어 주기
-        Optional<Users> exitUser = userRepository.findById(product.getUserId());
+        Optional<Users> exitUser = userRepository.findByUserIdAndUserTypeNot(product.getUserId(), UserType.LEAVE);
 
         if (exitUser.isPresent()) {
             newProduct.setUserId(exitUser.get());
@@ -49,7 +50,7 @@ public class ProductServiceImpl implements ProductService {
         if (updateProduct.isPresent()) {
             updateProduct.get().setProductRequestDto(productInfo);
 
-            Optional<Users> user = userRepository.findById(productInfo.getUserId());
+            Optional<Users> user = userRepository.findByUserIdAndUserTypeNot(productInfo.getUserId(), UserType.LEAVE);
             user.ifPresent(users -> updateProduct.get().setUserId(users));
 
             productRepository.save(updateProduct.get());

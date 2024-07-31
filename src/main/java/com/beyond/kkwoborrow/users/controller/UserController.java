@@ -17,11 +17,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.io.IOException;
 
 /*@RestController
 @Tag(name = "Users APIs", description = "회원 관련 API 목록")*/
 @Controller
+
 public class UserController {
     @Autowired
     UserService userService;
@@ -68,7 +70,7 @@ public class UserController {
     }
 
     // 회원 삭제
-    @DeleteMapping("/users/{user-id}")
+    @PatchMapping("/users/delete/{user-id}")
     @Operation(summary = "회원 정보 삭제", description = "특정 회원의 정보를 삭제한다.")
     public void deleteUser(@Parameter(description = "회원 번호", example = "1") @PathVariable("user-id") Long userId) {
         userService.deleteUser(userId);

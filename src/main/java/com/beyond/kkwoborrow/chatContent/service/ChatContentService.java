@@ -2,12 +2,11 @@ package com.beyond.kkwoborrow.chatContent.service;
 
 import com.beyond.kkwoborrow.chatContent.dto.ChatContentRequestDto;
 import com.beyond.kkwoborrow.chatContent.dto.ChatContentResponseDto;
-import com.beyond.kkwoborrow.chatContent.entity.ChatContent;
 
 import java.util.List;
 
 public interface ChatContentService {
-    ChatContent save(ChatContent chatContent);
+    ChatContentResponseDto save(ChatContentRequestDto requestDto);
 
     ChatContentResponseDto getChatContent(long contentId, long userId);
 
@@ -18,4 +17,6 @@ public interface ChatContentService {
     void deleteChatContent(long contentId, long userId);
 
     void deleteChatContents(long userId);
+
+    ChatContentResponseDto saveNoti(ChatContentRequestDto requestDto);
 }

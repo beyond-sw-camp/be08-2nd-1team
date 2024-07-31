@@ -1,16 +1,8 @@
 package com.beyond.kkwoborrow.chatContent.controller;
 
-import com.beyond.kkwoborrow.chatContent.entity.ChatContent;
-import com.beyond.kkwoborrow.chatList.entity.ChatList;
-import com.beyond.kkwoborrow.chatList.repository.ChatListRepository;
 import com.beyond.kkwoborrow.chatContent.dto.ChatContentRequestDto;
 import com.beyond.kkwoborrow.chatContent.dto.ChatContentResponseDto;
 import com.beyond.kkwoborrow.chatContent.service.ChatContentService;
-import com.beyond.kkwoborrow.notification.entity.Notifications;
-import com.beyond.kkwoborrow.notification.repository.NotificationRepository;
-import com.beyond.kkwoborrow.users.entity.UserType;
-import com.beyond.kkwoborrow.users.entity.Users;
-import com.beyond.kkwoborrow.users.repository.UserRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -32,17 +24,8 @@ public class ChatContentController {
     @Autowired
     private ChatContentService chatContentService;
 
-    @Autowired
-    private ChatListRepository chatListRepository;
-
-    @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private NotificationRepository notificationRepository;
-
     // 채팅 내용 등록
-    @PostMapping("/content")
+    @PostMapping("/content/chat")
     @Operation(summary = "채팅 내용 등록", description = "새로운 채팅 내용을 등록한다.")
     @ApiResponses(value = {
             @ApiResponse(
@@ -61,32 +44,47 @@ public class ChatContentController {
     })
     public ResponseEntity<ChatContentResponseDto> createChatContent(
             @RequestBody @Parameter(description = "채팅 내용 등록 요청 데이터", required = true) ChatContentRequestDto requestDto) {
+        ChatContentResponseDto responseDto = chatContentService.save(requestDto);
 
-        Users user = userRepository.findById(requestDto.getUserId())
-                .orElseThrow(() -> new RuntimeException("NOT FOUND USER : " + requestDto.getUserId()));
+        if(responseDto != null) {
+            return new ResponseEntity<>(responseDto, HttpStatus.CREATED);
+        }
+        else {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
-        ChatList chatList = chatListRepository.findById(requestDto.getChatId())
-                .orElseThrow(() -> new RuntimeException("NOT FOUND CHAT LIST : " + requestDto.getChatId()));
+    @PostMapping("/content/noti")
+    @Operation(summary = "문의사항 등록", description = "새로운 문의사항을 등록한다.")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "201",
+                    description = "문의사항이 성공적으로 등록되었습니다.",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ChatContentResponseDto.class)
+                    )
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "잘못된 요청 데이터",
+                    content = @Content(mediaType = "application/json")
+            )
+    })
+    public ResponseEntity<ChatContentResponseDto> createChatContentNoti(
+            @RequestBody @Parameter(description = "문의사항 내용 등록 요청 데이터", required = true) ChatContentRequestDto requestDto) {
+        ChatContentResponseDto responseDto = chatContentService.saveNoti(requestDto);
 
-        Notifications notification = notificationRepository.findById(requestDto.getNotificationId())
-                .orElseThrow(() -> new RuntimeException("NOT FOUND NOTIFICATION : " + requestDto.getNotificationId()));
-
-        ChatContent chatContent = new ChatContent();
-        chatContent.setDetail(requestDto.getDetail());
-        chatContent.setSendTime(requestDto.getSendTime());
-        chatContent.setUser(user);
-        chatContent.setChatList(chatList);
-        chatContent.setNotification(notification);
-
-        ChatContent savedChatContent = chatContentService.save(chatContent);
-
-        ChatContentResponseDto responseDto = new ChatContentResponseDto(savedChatContent);
-
-        return new ResponseEntity<>(responseDto, HttpStatus.CREATED);
+        if(responseDto != null) {
+            return new ResponseEntity<>(responseDto, HttpStatus.CREATED);
+        }
+        else {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     // 채팅 내용 수정
-    @PatchMapping("/content/{content-id}")
+    @PatchMapping("/content/chat/{content-id}")
     @Operation(summary = "채팅 내용 수정", description = "특정 채팅 내용을 수정한다.")
     @ApiResponses(value = {
             @ApiResponse(
@@ -108,7 +106,12 @@ public class ChatContentController {
             @RequestBody @Parameter(description = "채팅 내용 수정 요청 데이터", required = true) ChatContentRequestDto requestDto) {
         ChatContentResponseDto responseDto = chatContentService.updateChatContent(contentId, requestDto);
 
-        return new ResponseEntity<>(responseDto, HttpStatus.OK);
+        if(responseDto != null) {
+            return new ResponseEntity<>(responseDto, HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
     // 특정 채팅 내용 조회
@@ -143,7 +146,7 @@ public class ChatContentController {
     }
 
     // 특정 채팅 내용 삭제
-    @DeleteMapping("/content/{content-id}/{user-id}")
+    @DeleteMapping("/content/chat/{content-id}/{user-id}")
     @Operation(summary = "채팅 내용 삭제", description = "특정 채팅 내용을 삭제한다.")
     @ApiResponses(value = {
             @ApiResponse(

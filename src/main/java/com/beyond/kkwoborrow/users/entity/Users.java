@@ -23,7 +23,7 @@ public class Users {
     private String userName;
 
     @NotNull
-    @Column(name = "Email")
+    @Column(name = "email")
     private String email;
 
     @NotNull
@@ -31,20 +31,22 @@ public class Users {
     private String password;
 
     @NotNull
-    @Column(name = "UserRate")
+    @Column(name = "user_rate")
     @ColumnDefault("5")
     private double userRate;
 
     @NotNull
+
 //    @Convert(converter = UserTypeConverter.class)
     @Column(name = "UserType")
+
     private UserType userType;
 
     @NotNull
-    @Column(name = "Address")
+    @Column(name = "address")
     private String address;
 
-    @Column(name = "RateCount")
+    @Column(name = "rate_count")
     @ColumnDefault("0")
     private int rateCount;
 
@@ -71,10 +73,12 @@ public class Users {
 
         if (user.getUserType().equals("USER")){
             this.userType = UserType.USER;
-        } else{
+        } else if (user.getUserType().equals("ADMIN")) {
             this.userType = UserType.ADMIN;
-
+        } else{
+            this.userType = UserType.LEAVE;
         }
+
         this.address = user.getAddress();
 
         // TEST 미입력 값 처리

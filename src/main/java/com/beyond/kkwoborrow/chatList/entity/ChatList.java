@@ -1,6 +1,5 @@
 package com.beyond.kkwoborrow.chatList.entity;
 
-import com.beyond.kkwoborrow.chatList.dto.ChatListRequestDto;
 import com.beyond.kkwoborrow.users.entity.Users;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
@@ -15,17 +14,22 @@ import lombok.NoArgsConstructor;
 public class ChatList {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ChatID")
+    @Column(name = "chat_id")
     @Schema(description = "채팅 ID", example = "1")
     private long chatId;
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "UserID")
+    @JoinColumn(name = "user_id")
     @Schema(description = "사용자 정보", required = true)
     private Users user;
 
     public ChatList(Users user) {
+        this.user = user;
+    }
+
+    public ChatList(long chatId, Users user) {
+        this.chatId = chatId;
         this.user = user;
     }
 }

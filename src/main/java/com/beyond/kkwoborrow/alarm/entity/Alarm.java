@@ -16,51 +16,44 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Entity
 public class Alarm {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "AlarmID")
+    @Column(name = "alarm_id")
     private long alarmId;
 
-    @Column(name = "MeetPlace")
+    @Column(name = "meet_place")
     private String meetPlace;
 
-    @Column(name = "MeetTime")
+    @Column(name = "meet_time")
     private LocalDateTime meetTime;
 
     @NotNull
-    @Column(name = "AlarmType")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "alarm_type")
     private AlarmType alarmType;
 
     @ManyToOne
-    @JoinColumn(name = "TransactionID")
-    private Rental transactionId;
-
+    @JoinColumn(name = "transaction_id")
+    private Rental transaction;
 
     @ManyToOne
-    @JoinColumn(name = "ReserveID")
-    private Reservation reserveId;
+    @JoinColumn(name = "reserve_id")
+    private Reservation reservation;
 
     public Alarm(AlarmRequestDto alarmRequestDto, Rental transaction, Reservation reservation) {
         this.meetPlace = alarmRequestDto.getMeetPlace();
         this.meetTime = alarmRequestDto.getMeetTime();
         this.alarmType = alarmRequestDto.getAlarmType();
-        this.transactionId = transaction;
-        this.reserveId = reservation;
+        this.transaction = transaction;
+        this.reservation = reservation;
     }
 
     public void setAlarmRequestDto(AlarmRequestDto alarmRequestDto, Rental transaction, Reservation reservation) {
         this.meetPlace = alarmRequestDto.getMeetPlace();
         this.meetTime = alarmRequestDto.getMeetTime();
         this.alarmType = alarmRequestDto.getAlarmType();
-        this.transactionId = transaction;
-        this.reserveId = reservation;
-    }
-
-    public Rental getTransaction() {
-        return transactionId;
-    }
-
-    public Reservation getReservation() {
-        return reserveId;
+        this.transaction = transaction;
+        this.reservation = reservation;
     }
 }

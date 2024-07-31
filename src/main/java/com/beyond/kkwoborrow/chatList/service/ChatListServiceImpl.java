@@ -4,6 +4,7 @@ import com.beyond.kkwoborrow.chatList.dto.ChatListRequestDto;
 import com.beyond.kkwoborrow.chatList.dto.ChatListResponseDto;
 import com.beyond.kkwoborrow.chatList.entity.ChatList;
 import com.beyond.kkwoborrow.chatList.repository.ChatListRepository;
+import com.beyond.kkwoborrow.users.entity.UserType;
 import com.beyond.kkwoborrow.users.entity.Users;
 import com.beyond.kkwoborrow.users.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class ChatListServiceImpl implements ChatListService {
 
     @Override
     public List<ChatListResponseDto> getChatLists(Long userId) {
-        Users user = userRepository.findById(userId)
+        Users user = userRepository.findByUserIdAndUserTypeNot(userId, UserType.LEAVE)
                 .orElseThrow(() -> new RuntimeException("NOT FOUND USER : " + userId));
 
         List<ChatList> chatLists = chatListRepository.findAllByUser(user);
@@ -39,7 +40,7 @@ public class ChatListServiceImpl implements ChatListService {
     }
     @Override
     public ChatListResponseDto createChatList(ChatListRequestDto requestDto) {
-        Users user = userRepository.findById(requestDto.getUserId())
+        Users user = userRepository.findByUserIdAndUserTypeNot(requestDto.getUserId(), UserType.LEAVE)
                 .orElseThrow(() -> new RuntimeException("NOT FOUND USER : " + requestDto.getUserId()));
 
         ChatList chatList = new ChatList(user);
@@ -61,7 +62,7 @@ public class ChatListServiceImpl implements ChatListService {
     @Transactional
     @Override
     public void deleteAll(Long userId) {
-        Users user = userRepository.findById(userId)
+        Users user = userRepository.findByUserIdAndUserTypeNot(userId, UserType.LEAVE)
                 .orElseThrow(() -> new RuntimeException("NOT FOUND USER : " + userId));
 
         chatListRepository.deleteAllByUser(user);
