@@ -84,19 +84,17 @@ chore: 빌드 업무 수정, 패키지 매니저 수정
 
 ## ⏰ WBS
 [WBS 문서](https://docs.google.com/spreadsheets/d/1a-3ZwOdtigPyTlqB04m4GaJN9n2l6s8l3Ynwk6f4-O4/edit?gid=1835326347#gid=1835326347)
-<details>
-  <summary> WBS 문서 내용 </summary>
-    <img src="https://github.com/user-attachments/assets/8841f1ab-f3cc-4852-a7cf-4fc2ae33bbb5" alt="요구사항 정의서">
-</details>
+<br>
+
+<img src="https://github.com/user-attachments/assets/8841f1ab-f3cc-4852-a7cf-4fc2ae33bbb5" alt="요구사항 정의서">
 
 <br><br>
 
 ## ✏️ 요구사항 정의서
 [요구사항 정의서](https://docs.google.com/spreadsheets/d/1de1OOTb09UcI2-DYKo18OVN5fab_uJpg2NqqRko5mMI/edit?gid=0#gid=0)
-<details>
-  <summary> 요구사항 정의서 내용 </summary>
-      <img src="https://github.com/user-attachments/assets/a236b4d7-68fd-4556-b155-5a188c9433c9" alt="요구사항 정의서">
-</details>
+<br>
+
+<img src="https://github.com/user-attachments/assets/a236b4d7-68fd-4556-b155-5a188c9433c9" alt="요구사항 정의서">
 
 <br><br>
 
@@ -111,21 +109,17 @@ chore: 빌드 업무 수정, 패키지 매니저 수정
 
 ## ✏️ ERD 설계
 [ERD Cloud](https://www.erdcloud.com/d/CDfBLfLMCZDoTdqp4)
+<br>
 
-<details>
-  <summary> ERD 설계 내용 </summary>
-    <img src="https://github.com/user-attachments/assets/69fde1fd-86f1-44d2-9773-7f0932ef7621" alt="ERD 설계 내용">
-</details>
+<img src="https://github.com/user-attachments/assets/69fde1fd-86f1-44d2-9773-7f0932ef7621" alt="ERD 설계 내용">
 
 <br><br>
 
 ## 🗂️ API 명세서
 [API 명세서](https://www.notion.so/API-0f35268f5c644fd7a274c48a4497e6a6?pvs=4)
+<br>
 
-<details>
-    <summary> API 명세서 내용 </summary>
-    <img src="https://github.com/user-attachments/assets/f15ee05b-6995-47b4-bdc7-56a8b47aef78" alt="API 명세서 내용">
-</details>
+<img src="https://github.com/user-attachments/assets/f15ee05b-6995-47b4-bdc7-56a8b47aef78" alt="API 명세서 내용">
 
 <br><br>
 
