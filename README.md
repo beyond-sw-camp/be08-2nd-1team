@@ -121,50 +121,41 @@ chore: 빌드 업무 수정, 패키지 매니저 수정
 [API 명세서](https://www.notion.so/API-0f35268f5c644fd7a274c48a4497e6a6?pvs=4)
 <br>
 
-<details>
-    <summary>회원가입</summary>
-    <img src="https://github.com/user-attachments/assets/269ce5c3-cd51-4a9d-9c6b-1e9cb92b5b86" alt="회원가입">
-</details>
-<details>
-    <summary>회원</summary>
-    <img src="https://github.com/user-attachments/assets/157cbc17-bb8b-40b9-8b83-8c20787229ae" alt="회원">
-</details>
-<details>
-    <summary>제품</summary>
-    <img src="https://github.com/user-attachments/assets/87e01b53-d1b1-4720-8544-a3b81b4d7fdb" alt="제품">
-</details>
-<details>
-    <summary>대여/반납</summary>
-    <img src="https://github.com/user-attachments/assets/16692ea4-789b-4aa3-be66-26ad0b9ba1a8" alt="대여/반납">
-</details>
-<details>
-    <summary>예약</summary>
-     <img src="https://github.com/user-attachments/assets/26d165a0-e912-4565-b20b-8c13b2d13e67" alt="예약">
-</details>
-<details>
-    <summary>게시글</summary>
-     <img src="https://github.com/user-attachments/assets/7b1f7b46-8c1b-4972-9dfe-45223a3b71b9" alt="게시글">
-</details>
-<details>
-    <summary>채팅</summary>
-</details>
-<details>
-    <summary>리뷰</summary>
-    <img src="https://github.com/user-attachments/assets/4db0aa17-c189-487c-aec8-6d01430d7254" alt="리뷰">
-</details>
-<details>
-    <summary>알람</summary>
-    <img src="https://github.com/user-attachments/assets/a882870f-8cce-4bea-baae-3de707feb9d4" alt="알람">
-</details>
-<details>
-    <summary>신고</summary>
-    <img src="https://github.com/user-attachments/assets/efcff866-1a88-4b2e-a4f5-44864f0c4f35" alt="신고">
-</details>
-<details>
-    <summary>문의사항</summary>
-    <img src="https://github.com/user-attachments/assets/65a2d0cc-4cd7-4cf5-bf6d-c55969a57739" alt="문의사항">
-</details>
+### [ 회원가입 ]
+![image](https://github.com/user-attachments/assets/376197bf-4948-4d0a-b118-d53751b1bc07)
 
+### [ 회원 ]
+![image](https://github.com/user-attachments/assets/3627616d-49c2-4648-876b-c6aaec3c4dbe)
+
+### [ 제품 ]
+![image](https://github.com/user-attachments/assets/1f6cabab-d72d-4a74-8874-900a1016f3f0)
+
+### [ 대여/반납 ]
+![image](https://github.com/user-attachments/assets/dc8038b0-68b2-4b83-bfa4-da70e5f189b9)
+
+### [ 예약 ]
+![image](https://github.com/user-attachments/assets/b792cf59-4f60-4bfa-97f6-f9a0fd0c7839)
+
+### [ 게시글 ]
+![image](https://github.com/user-attachments/assets/94c56c38-44f4-4a31-b3cd-01b2d8f60b66)
+
+### [ 채팅 / 문의사항 내용 ]
+![image](https://github.com/user-attachments/assets/86a0ac2c-262c-4779-ad26-f0595c421f39)
+
+### [ 채팅 목록 ]
+![image](https://github.com/user-attachments/assets/40542b72-b0a0-4999-937c-d1aa9088172d)
+
+### [ 문의사항 목록 ]
+![image](https://github.com/user-attachments/assets/823cc461-bc48-450e-be84-8c1911b12221)
+
+### [ 리뷰 ]
+![image](https://github.com/user-attachments/assets/5fdd6342-659e-4d5d-8232-b093ffed0471)
+
+### [ 알람 ]
+![image](https://github.com/user-attachments/assets/e099b8f3-e803-40cc-9689-1f257edcfe2b)
+
+### [ 신고 ]
+![image](https://github.com/user-attachments/assets/0404c2ac-2a3a-48bf-ae21-833a73e8dcba)
 
 <br><br>
 
@@ -181,3 +172,8 @@ chore: 빌드 업무 수정, 패키지 매니저 수정
 ## 📌 테스트
 - [테스트 케이스](https://docs.google.com/spreadsheets/d/143o5n9nA6vpQzF20SksNWiuAj6WC3vqVa4pi4SzSH9s/edit?gid=0#gid=0)
 - [테스트 결과](https://www.notion.so/493b2029af3649ce843d4b43082114a4?v=46642e9b3a3f4749aa40217241f08f84&pvs=4)
+
+## 🎉 회고록
+|**김도하**|**김민지**|**이은서**|**전현규**|**조은희**|
+|:--:|:--:|:--:|:--:|:--:|
+|||||수업 진도에 맞춰서 진행하니까 시간이 조금 부족했지만 주어진 시간 안에 역할을 분배하고 맡은 역할을 해낸 것 같아 뿌듯합니다. 데이터베이스 설계시 중복된 내용을 줄이기 위해서 하나의 테이블에 id 값만 가지는 테이블을 join 해서 사용했는데, 구현하다보니까 되게 복잡해졌고 처음에 테이블 설계할 때 제대로 설계하는 것이 중요하다는 것을 몸소 느꼈습니다. 다들 고생하셨습니다 !|
